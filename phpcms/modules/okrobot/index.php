@@ -25,17 +25,17 @@ class index {
         } else if ($pid) {  
             //父进程会得到子进程号，所以这里是父进程执行的逻辑  
             //如果不需要阻塞进程，而又想得到子进程的退出状态，则可以注释掉pcntl_wait($status)语句，或写成：  
-            pcntl_wait($status,WNOHANG); //等待子进程中断，防止子进程成为僵尸进程。  
-            include template('okrobot', 'index');
+             pcntl_wait($status,WNOHANG); //等待子进程中断，防止子进程成为僵尸进程。  
+             include template('okrobot', 'index');
+
+
         } else {  
             //子进程得到的$pid为0, 所以这里是子进程执行的逻辑。  
-            $res=0;
-
-            $res=refresh_userinfo();
+              $res=0;
+              $res=refresh_userinfo();
             exit(0) ;  
         }  
     }
-
 
 
 

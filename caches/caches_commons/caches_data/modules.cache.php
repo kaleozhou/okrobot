@@ -506,19 +506,5 @@ return array (
     'installdate' => '2010-09-06',
     'updatedate' => '2010-09-06',
   ),
-  'okrobot' => 
-  array (
-    'module' => 'okrobot',
-    'name' => 'okrobot',
-    'url' => '',
-    'iscore' => '0',
-    'version' => '1.0',
-    'description' => '',
-    'setting' => '',
-    'listorder' => '0',
-    'disabled' => '0',
-    'installdate' => '2015-12-06',
-    'updatedate' => '2015-12-06',
-  ),
 );
 ?>

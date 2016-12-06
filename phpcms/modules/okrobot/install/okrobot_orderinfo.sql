@@ -9,6 +9,7 @@ CREATE TABLE `phpcms_okrobot_orderinfo` (
     `price` varchar(256) COMMENT '委托价格',
     `status` varchar(256) COMMENT '-1:已撤销  0:未成交  1:部分成交  2:完全成交 4:撤单处理中',
     `ordertype` varchar(256)COMMENT 'buy_market:市价买入 / sell_market:市价卖出',
+    `symbol` varchar(256)COMMENT 'buy_market:市价买入 / sell_market:市价卖出',
 
     PRIMARY KEY (`id`)
 ) TYPE=MyISAM;
