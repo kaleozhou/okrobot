@@ -1,0 +1,537 @@
+<?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head profile="http://gmpg.org/xfn/11">
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="<?php echo TP;?>css/spzh.css" media="screen" />
+        <script type="text/javascript" src="<?php echo TP;?>js/jquery.js"></script>
+        <script type="text/javascript" src="<?php echo TP;?>js/ajaxfileupload.js"></script>
+        <div style="display:none">
+            ﻿</div>
+    </head>
+
+
+    <script type="text/javascript"> 
+String.prototype.Trim = function() { 
+    var m = this.match(/^\s*(\S+(\s+\S+)*)\s*$/); 
+    return (m == null) ? "" : m[1]; 
+}
+String.prototype.isMobile = function() { 
+    return (/^0{0,1}(13[0-9]|14[0-9]|15[0-9]|16[0-9]|18[0-9]|19[0-9])[0-9]{8}$/.test(this.Trim())); 
+}
+String.prototype.isTel = function()
+{
+    //"兼容格式: 国家代码(2到3位)-区号(2到3位)-电话号码(7到8位)-分机号(3位)"
+    //return (/^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/.test(this.Trim()));
+    return (/^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/.test(this.Trim()));
+}</script>
+    <script type="text/javascript">
+function get(obj) {
+    var partten = /^\d{10,13}$/;
+    if (!partten.test(document.getElementById("tel").value)) {
+        alert('请输入正确的手机号码');
+        return;
+    }
+    obj.disabled = true;
+    $.ajax({
+        url: "PHP_Demo/restdemo-php/index.php",
+        type: "Post",      
+        data: "Tel=" + $("#tel").val(),
+        success: function(msg) {
+            alert("验证码已发送至您手机,30秒内到达!")
+                return;
+
+        }
+    })
+
+}
+    </script>
+
+    <script type="text/javascript"> 
+function chkForm()
+{
+    var realname=document.txzl.realname.value;
+    bb=realname.replace(/^\s+|\s+$/g, '');
+    if(bb=="" || bb=="您的真实姓名")
+    {
+        alert("姓名栏不能为空,请填写真实姓名");
+        document.txzl.realname.focus();
+        return false;
+    }
+    if(realname.length<2)
+    {
+        alert("姓名长度不能少于2位,请填写真实姓名");
+        document.txzl.realname.focus();
+        return false;
+    }
+    if(realname.length>14)
+    {
+        alert("姓名长度不能大于14位,请填写真实姓名");
+        document.txzl.realname.focus();
+        return false;
+    }
+    var address=document.txzl.address.value;
+    if(address=="")
+    {
+        alert("请填写您的住址！");
+        document.txzl.address.focus();
+        return false;
+    }
+    var tel=document.txzl.tel.value;
+    if(tel==""||tel=="填写您的手机号码")
+    {
+        alert("联系手机不能为空！");
+        document.txzl.tel.focus();
+        return false;
+    }
+    if(tel.length<11)
+    {
+        alert("手机号长度不能少于11位");
+        document.txzl.tel.focus();
+        return false;
+    }
+    if(tel.length>11)
+    {
+        alert("手机号长度不能大于11位");
+        document.txzl.tel.focus();
+        return false;
+    }
+
+    var qq=document.txzl.qq.value;
+    if(qq=="")
+    {
+        alert("请填写您的QQ！");
+        document.txzl.qq.focus();
+        return false;
+    }
+
+    var bank_account_name=document.txzl.bank_account_name.value;
+    if(bank_account_name=="")
+    {
+        alert("请填写您的户名(与身份证姓名相同)！");
+        document.txzl.bank_account_name.focus();
+        return false;
+    }
+    var bank_name=document.txzl.bank_name.value;
+    if(bank_name=="")
+    {
+        alert("请填写您的银行卡名称！");
+        document.txzl.bank_name.focus();
+        return false;
+    }
+    var bank_account=document.txzl.bank_account.value;
+    if(bank_account=="")
+    {
+        alert("请填写银行卡卡号！");
+        document.txzl.bank_account.focus();
+        return false;
+    }
+    var pic1=document.txzl.pic1.value;
+    if(pic1=="")
+    {
+        alert("请上传身份证正面照！");
+        document.txzl.pic1.focus();
+        return false;
+    }
+    var pic2=document.txzl.pic2.value;
+    if(pic2=="")
+    {
+        alert("请上传身份证反面照！");
+        document.txzl.pic2.focus();
+        return false;
+    }
+    var pic3=document.txzl.pic3.value;
+    if(pic3=="")
+    {
+        alert("请上传银行卡正面照！");
+        document.txzl.pic3.focus();
+        return false;
+    }
+    var pic4=document.txzl.pic4.value;
+    if(pic4=="")
+    {
+        alert("请上传手持身份证半身照！");
+        document.txzl.pic4.focus();
+        return false;
+    }
+
+
+    return true;
+
+}
+    </script>
+    <script type="text/javascript">
+var str = '';
+
+
+function ajaxFileUpload3(){  
+    $("#msg3")
+        .ajaxStart(function(){
+            $(this).show();
+        });
+
+    $.ajaxFileUpload(
+            {
+                url:'model/up_deal3.php',
+                secureuri:false,
+                fileElementId:'file3',
+                dataType: 'text',
+                //data:{name:'qinmi', id:'123'},
+
+                success: function(data){
+
+                    str="";
+                    if(data=='error'){
+                        $('#msg3').html("<span style='color:red'>上传失败</span>");
+                    }else{
+                        $('#msg3').html("<span style='color:green;margin-left: 10px;'>上传成功</span>");
+                        str +=  data;
+                        $('#fname3').val(str);
+                        str2='<img name="sfzzm" id="sfzzm" src="model/upload/'+str+'" width="120" height="80"/>';
+                        $('#sfz3').html(str2);
+                        $('#fname3').css("display","block");
+                        $('#file3').css("display","none"); 				   
+                    }
+                }
+            }
+    );
+    return false;
+}
+
+
+function ajaxFileUpload2(){  
+    $("#msg2")
+        .ajaxStart(function(){
+            $(this).show();
+        });
+
+    $.ajaxFileUpload(
+            {
+                url:'model/up_deal2.php',
+                secureuri:false,
+                fileElementId:'file2',
+                dataType: 'text',
+                //data:{name:'qinmi', id:'123'},
+
+                success: function(data){
+
+                    str="";
+                    if(data=='error'){
+                        $('#msg2').html("<span style='color:red'>上传失败</span>");
+                    }else{
+                        $('#msg2').html("<span style='color:green;margin-left: 10px;'>上传成功</span>");
+                        str +=  data;
+                        $('#fname2').val(str);
+                        str2='<img name="sfzzm" id="sfzzm" src="model/upload/'+str+'" width="120" height="80"/>';
+                        $('#sfz2').html(str2);
+                        $('#fname2').css("display","block");
+                        $('#file2').css("display","none"); 				   
+                    }
+                }
+            }
+    );
+    return false;
+}
+
+function ajaxFileUpload1(){  
+    $("#msg1")
+        .ajaxStart(function(){
+            $(this).show();
+        });
+
+    $.ajaxFileUpload(
+            {
+                url:'model/up_deal1.php',
+                secureuri:false,
+                fileElementId:'file11',
+                dataType: 'text',
+                //data:{name:'qinmi', id:'123'},
+
+                success: function(data){
+
+                    str="";
+                    if(data=='error'){
+                        $('#msg1').html("<span style='color:red'>上传失败</span>");
+                    }else{
+                        $('#msg1').html("<span style='color:green;margin-left: 10px;'>上传成功</span>");
+                        str +=  data;
+                        $('#fname1').val(str);
+                        str2='<img name="sfzzm" id="sfzzm" src="model/upload/'+str+'" width="120" height="80"/>';
+                        $('#sfz11').html(str2);
+                        $('#fname1').css("display","block");
+                        $('#file11').css("display","none"); 				   
+                    }
+                }
+            }
+    );
+    return false;
+}
+
+
+function ajaxFileUpload(){  
+    $("#msg")
+        .ajaxStart(function(){
+            $(this).show();
+        });
+
+    $.ajaxFileUpload(
+            {
+                url:'model/up_deal.php',
+                secureuri:false,
+                fileElementId:'file1',
+                dataType: 'text',
+                //data:{name:'qinmi', id:'123'},
+
+                success: function(data){
+
+                    str="";
+                    if(data=='error'){
+                        $('#msg').html("<span style='color:red'>上传失败</span>");
+                    }else{
+                        $('#msg').html("<span style='color:green;margin-left: 10px;'>上传成功</span>");
+                        str +=  data;
+                        $('#fname').val(str);
+                        str2='<img name="sfzzm" id="sfzzm" src="model/upload/'+str+'" width="120" height="80"/>';
+                        $('#sfz1').html(str2);
+                        $('#fname').css("display","block");
+                        $('#file1').css("display","none"); 				   
+                    }
+                }
+            }
+    );
+    return false;
+}
+
+function refresh() {
+    document.getElementById("codeP").src = "picture.php?tm="+Math.random();
+}
+
+    </script>
+
+    <body id="page">
+        <div id="container">
+            <div id="main_content" class="outer">			
+                <div class="html_inner">
+                    <div>
+                        <div class="html_content">
+
+                            <div class="html_con_left">
+                                <div class="widget_700">
+                                    <div class="widget_top"></div><!-- widget_top -->
+                                    <div class="widget_middle">
+                                        <div class="inner_container">
+                                            <form action="<?php echo MYFORM;?>spzh" method="post" name="txzl">
+                                                <input type="hidden" name="product" value="海南大宗-实盘开户" />
+                                                <div class="info_personal">
+                                                    <div class="title">个人信息</div>
+                                                    <table class="kaihu_table_1" border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="title">姓名 <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text"><input class="inputstyle1"  name="realname" type="text" value=""  onfocus="if(value == '您的真实姓名'){this.style.color='#333333'; this.value=''; }"  /></td>
+                                                            <td class="interval">&nbsp;</td>
+                                                            <td class="title">性别 <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text">
+                                                                <input type="radio" value="男" name="sex" id="sex"  checked="checked"><label for="sex">男</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" value="女" name="sex" id="sex" ><label for="sex">女</label></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="title">住址 <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text" colspan="4"><input name="address" class="" value="" style="width: 463px;"/></td>
+                                                        </tr>
+
+
+                                                        <tr>
+
+                                                            <td class="title">手机 <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text"><input class="inputstyle1" name="tel" id="tel" type="text" value=""  onfocus="if(value == '填写您的手机号码'){this.style.color='#333333'; this.value=''; }"/></td>
+                                                            <td class="interval"> </td>
+                                                            <td class="title">接收帐号/密码</td>
+
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="title">QQ&nbsp;　<span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text"><input name="qq" class="" value="" /></td>
+                                                            <td class="interval">&nbsp;</td>
+                                                            <td class="title">方便客服联系</td>
+                                                            <td class="text">&nbsp;</td>
+                                                        </tr>
+
+                                                    </table>
+                                                </div><!-- info_personal -->
+
+                                                <div class="info_bank">
+                                                    <div class="title">银行信息&nbsp;&nbsp;&nbsp;&nbsp;<span class="error_span"></span></div>
+                                                    <table class="kaihu_table_1" border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="title">户名<span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text_big"><input name="bank_account_name" class="" value="" /><b>(与身份证姓名相同)</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="title">银行名称 <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text_big"><input name="bank_name" class="" value="" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="title">卡号 <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text_big"><input name="bank_account" class="" value=""  /></td>
+                                                        </tr>
+
+                                                    </table>
+                                                </div><!-- info_bank -->
+
+                                                <div class="info_postscript">
+                                                    <div class="title">上传资料&nbsp;&nbsp;&nbsp;&nbsp;<span class="error_span"></span></div>
+                                                    <table class="kaihu_table_1" border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="title_big">身份证正面： <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text_big"><input type="file" name="file1"  id="file1" size="30" style="WIDTH: 353px;"    value="身份证正面"  /> <input id='fname'  name="pic1" class="inputstyle1"  style="display:none;width:265px;float: left;" readonly="true"  size='30' /><span id="msg"  style="display: none" >UpLoading...</span></td>
+                                                            <td><input style="background-image:url(<?php echo TP;?>images/zl_15.png); width:103px; height:33px; border:0;" type="button" value=""   onclick="return ajaxFileUpload();"  /></td> 
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td class="title_big">身份证反面： <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text_big"><input type="file" name="file11"  id="file11" size="30" style="WIDTH: 353px;"   value="身份证反面" /><input id='fname1' class="inputstyle1"  name="pic2"  style="display:none;width:265px;float: left;" readonly="true"   size='30' /><span id="msg1"  style="display: none">UpLoading...</span> </td>
+                                                            <td>
+                                                                <input style="background-image:url(<?php echo TP;?>images/zl_15.png); width:103px; height:33px; border:0;" type="button" value=""   onclick="return ajaxFileUpload1();"  />	</td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td class="title_big">银行卡正面： <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text_big"><input type="file" name="file2"  id="file2" size="30" style="WIDTH: 353px;"  value="银行卡正面" /><input id='fname2' class="inputstyle1"  name="pic3"   style="display:none;width:265px;float: left;" readonly="true"   size='30' /><span id="msg2"  style="display: none">UpLoading...</span></td>
+                                                            <td>
+                                                                <input style="background-image:url(<?php echo TP;?>images/zl_15.png); width:103px; height:33px; border:0;" type="button" value=""   onclick="return ajaxFileUpload2();"  />    </td>
+                                                        </tr>
+
+                                                        <tr>
+
+                                                            <td class="title_big">手持身份证半身照： <span style="color:#CC0000;font-weight:normal">*</span>: </td>
+                                                            <td class="text_big"><input type="file" name="file3"  id="file3" size="30" style="WIDTH: 353px;"  value="手持身份证半身照" /><input id='fname3' class="inputstyle1"  name="pic4"   style="display:none;width:265px;float: left;" readonly="true"   size='30' /><span id="msg3"  style="display: none">UpLoading...</span></td>
+                                                            <td>
+                                                                <input style="background-image:url(<?php echo TP;?>images/zl_15.png); width:103px; height:33px; border:0;" type="button" value=""   onclick="return ajaxFileUpload3();"  />    </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </div>
+                                                <p><strong>请注意：图片格式只能是<a href="http://www.tuhaokuai.com/convert?b" target="_blank">JPG、GIF、BMP格式，</a>文件大小900K以内。请用IE浏览器或<a href="http://se.360.cn/" target="_blank">360浏览器</a>(极速模式)上传资料，如有疑问请联系客服！</strong></p>
+                                                <p>&nbsp; </p>
+                                                <div class="info_postscript">
+                                                    <div class="title1">附言</div>
+                                                    <table class="kaihu_table_1" border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td>
+                                                                <textarea name="postscript"></textarea>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div><!-- info_postscript -->
+
+                                                <div class="submit_tools">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <input  style="margin-right:52px;" type="image" src="<?php echo TP;?>images/zl_20.png" onClick="return chkForm();"/></td><td>
+                                                                <label><input type="checkbox" value="" checked />&nbsp;<span style=" color:#F00; font-size:12px;">同意《客户协议书》</span></label></td></tr></table>
+                                                </div><!-- submit_tools -->
+                                            </form>
+
+                                        </div><!-- inner_container -->
+                                    </div><!-- widget_middle -->
+                                    <div class="widget_bottom"></div><!-- widget_bottom -->
+                                </div><!-- widget_700 -->
+                                <div class="kaihu_title"><img alt="免费开设外汇交易账户,黄金交易账户" src="<?php echo TP;?>images/kaihu_table_title.png"></div>
+                            </div><!-- html_con_left -->
+
+                            <div class="html_con_right">
+                                <!-- 账户信息 -->
+
+                                <div class="ins ins_account">
+                                    <div class="ins_con">
+                                        <div class="ins_detail">
+                                            <div class="widget_top"></div>
+                                            <div class="widget_middle">
+                                                <div class="inner_container">
+
+                                                </div>
+                                            </div>
+                                            <div class="widget_bottom"></div>
+                                        </div>
+                                        <div class="special_title">
+                                            <!--<img alt="账户信息填写帮助" src="<?php echo TP;?>images/ins_account.png">-->
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- 个人信息 -->
+                                <div class="ins ins_personal">
+                                    <div class="ins_con">
+                                        <div class="ins_detail">
+                                            <div class="widget_top"></div>
+                                            <div class="widget_middle">
+                                                <div class="inner_container">
+                                                    <p>务必填写真实信息，提交本申请表后，请务必在线提交以下个人资料扫描件或照片。超过1M的文件请发送到开户邮箱kh@99gjs.com，我们会尽快与您联系。<br>
+                                                    1.身份证正、反面（边角完整）；<br>
+                                                    2.银行卡正面（需与身份证同名)。
+                                                    </p>
+                                                    <p>3.手持身份证半身照                                        </p>
+                                                    <p><strong>手持拍照注意事项：</strong></p>
+                                                    <p>(1)找一处背景颜色比较纯、光线明亮的地方拍摄。</p>
+                                                    <p>(2)确保脸部五官完整，双手手持身份证，尽量向前伸，以确保身份证上的文字清晰可见。</p>
+                                                    <p>(3)如果手机像素不高，请用相机拍摄。</p>
+                                                    <p>&nbsp;</p>
+                                                </div>
+                                                <!-- inner_container -->
+                                            </div><!-- widget_middle -->
+                                            <div class="widget_bottom"></div><!-- widget_bottom -->
+                                        </div><!-- ins_detail -->
+                                        <div class="special_title">
+                                            <img alt="个人信息填写帮助" src="<?php echo TP;?>images/ins_personal.png">
+                                        </div><!-- special_title -->
+                                    </div><!-- ins_con -->
+                                </div><!-- ins_personal -->
+
+                                <!-- 银行信息 -->
+                                <div class="ins ins_bank">
+                                    <div class="ins_con">
+                                        <div class="ins_detail">
+                                            <div class="widget_top"></div>
+                                            <div class="widget_middle">
+                                                <div class="inner_container">
+                                                    以下信息将影响您今后网银入金、出金取款，因此请确认以下信息：<br>
+                                                    1.银行卡户名需与身份证姓名相同；<br>
+                                                    2.您的银行账户能正常使用，网银U盾状态正常。
+                                                </div><!-- inner_container -->
+                                            </div><!-- widget_middle -->
+                                            <div class="widget_bottom"></div><!-- widget_bottom -->
+                                        </div><!-- ins_detail -->
+                                        <div class="special_title">
+                                            <img alt="银行信息填写帮助" src="<?php echo TP;?>images/ins_bank.png">
+                                        </div><!-- special_title -->
+                                    </div><!-- ins_con -->
+                                </div><!-- ins_bank -->
+
+
+                            </div><!-- html_con_right -->
+
+                            <div class="clear"></div>
+                        </div><!-- html_content -->
+                    </div><!-- html_main -->
+                </div><!-- html_inner -->
+
+
+
+
+
+
+
+            </div><!-- /#main_content .outer -->	
+
+        </div><!-- #main .wrapper -->
+        </div><!-- #page -->
+    </body>
+</html>
+<!-- Dynamic page generated in 1.495 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2014-12-24 02:44:57 -->
+
+<!-- super cache -->
