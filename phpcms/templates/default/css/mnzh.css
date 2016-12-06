@@ -1,0 +1,252 @@
+:﻿body, html  {
+	height: 100%;
+}
+
+body, html, p, ul, ol {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+body  {
+	font-family: 宋体, Helvetica, Arial, Sans-serif;
+	font-size: 12px;
+	line-height: 1.5;  /*unitless for proper inheritance*/
+}
+
+p  {
+	margin-top: 5px;
+	line-height:20px;
+}
+/*以下为单独注册页面css*/
+.html_inner  {
+	padding: 0px;
+}
+
+.html_container {
+	font-size:12px;
+	color:#858585;
+}
+
+.html_header {
+	background:url(/phpcms/templates/default/images/headerbg.jpg) repeat-x; 
+	height:150px;
+}
+
+.html_logo {
+	padding: 10px 0 0 20px;
+}
+
+.html_main {
+	background:url(/phpcms/templates/default/images/bg.png) repeat-x;
+	padding-bottom:60px;
+}
+
+.html_bottom {
+	background:#f0f0f0;
+	border-top:solid 1px #d1d1d1;
+}
+
+.html_left {
+	float:left;
+	width:400px;
+	text-align:left;
+}
+
+.html_right {
+	float:right;
+	width:560px;
+	margin-top: 30px;
+}
+
+.html_login {
+	width:363px;
+	position:relative;
+}
+
+.html_login .html_widget {
+	width:363px;
+	padding-top:30px;
+}
+
+.html_login .html_widget .html_widget_top{
+	width:363px;
+	height: 6px;
+	background:url(/phpcms/templates/default/images/login_top.png);
+	*overflow:hidden;
+}
+
+.html_login .html_widget .html_widget_middle{
+	background:url(/phpcms/templates/default/images/login_middle.png) repeat-y;
+	padding:40px 30px 0;
+}
+
+.html_login .html_widget .html_widget_bottom{
+	width:363px;
+	height:6px;
+	background:url(/phpcms/templates/default/images/login_bottom.png);
+	*overflow:hidden;
+}
+
+.html_login .html_widget .html_widget_middle .html_inner_container {
+	overflow:hidden;
+	text-align:left;
+}
+
+.html_login .html_title {
+	position:absolute;
+	top:0;
+	left:10px;
+}
+
+.html_login_table {
+	
+	margin:auto;
+	padding-top:20px;
+	padding-bottom:10px;
+}
+
+strong{
+color: #da0101;
+font-weight: lighter;	
+	}
+
+.html_login_table td.t_left {
+	
+	color:#805C15;
+	font-weight:bold;
+}
+
+.html_login_table td.t_right {
+	width:223px;
+	height:20px;
+}
+
+.html_login_table td.t_right input{
+	width:200px;
+	border:1px solid a3ce94;
+}
+
+.html_login_table td.tools {
+	height:60px;
+	vertical-align:middle;
+}
+
+.html_login_table td.tools a{
+	background:url(/phpcms/templates/default/images/button.png);
+	line-height:34px;
+	text-align:center;
+	font-size:14px;
+        font-weight:bold;
+	width:94px;
+	height:34px;
+	display:block;
+	color:#FFFFFF;
+	text-decoration:none;
+	float:right;
+	margin-right:10px;
+}
+
+.html_login_table td.tools a:hover{
+	text-decoration:underline;
+}
+
+.html_des {
+	background-color:#f0ffd4;
+	border-top:3px solid #fff;
+	padding:20px 30px;
+	text-align:left;
+	
+}
+
+.html_des a.html_a {
+	color:#157fda;
+	text-decoration:none;
+}
+
+.html_des a.html_a:hover{
+	text-decoration:underline;
+}
+
+.gif_pic {
+	margin-top:20px;
+}
+
+.html_special {
+	position:relative;
+}
+
+.html_detail {
+	padding-top:15px;
+}
+
+
+
+.html_detail .html_widget_middle{
+	background:url(/phpcms/templates/default/images/right_middle.png) repeat-y;
+	padding: 25px 0 10px 20px;
+}
+
+.submit {
+background: url(/phpcms/templates/default/images/button.png);
+line-height: 34px;
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+width: 94px;
+height: 34px;
+display: block;
+color: #FFFFFF;
+text-decoration: none;
+float: right;
+margin-right: 10px;
+border: 0;
+cursor: pointer;
+}
+.submit1{
+background: url(/phpcms/templates/default/images/button.png);
+line-height: 34px;
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+width: 94px;
+height: 34px;
+display: block;
+color: #FFFFFF;
+text-decoration: none;
+border: 0;
+cursor: pointer;
+margin: auto;
+text-align: center;
+}
+
+.html_special_title {
+	position:absolute;
+	top:0;
+	left:10px;
+	height:28px;
+	width:147px;
+}
+
+.des_table td.d_left {
+	width:75px;
+	font-weight:bold;
+	vertical-align:top;
+}
+
+.tzjy {
+width: 17px !important;
+}
+input.tzjy1 {
+width: 17px !important;
+margin-left: 52px;
+}
+input.tzjy2 {
+width: 17px !important;
+margin-left: 28px;
+}
+input.tzjy3 {
+width: 17px !important;
+margin-left: 40px;
+}
+.linehight{line-height:35px}
