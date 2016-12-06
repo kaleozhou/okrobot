@@ -9,7 +9,8 @@
     <body>
         {pc:get sql="SELECT * FROM phpcms_okrobot_userinfo where id=(select max(id) from phpcms_okrobot_userinfo)" cache="0" return="data"}
         {loop $data $key $val}
-        okcoin 自动交易机器人
+        净资产：{$val[asset_net]}
+        总资产：{$val[asset_total]}
         净资产：{$val[asset_net]}
         总资产：{$val[asset_total]}
         {/loop}
