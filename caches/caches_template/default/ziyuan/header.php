@@ -48,7 +48,7 @@
         <span class="aa"><img src="<?php echo TP;?>images/daili3.png" alt="海南大宗" style="margin-bottom: -3px;"></span>&nbsp;<a href="<?php echo MYLINK;?>10825">招商加盟&nbsp;</a> 
         <a href="<?php echo MYLINK;?>10833">软件下载&nbsp;</a>
         <a href="<?php echo MYLINK;?>10828">交易规则&nbsp;</a>
-        <a href="http://localhost/index.php?&m=okrobot&c=index">Okrobot</a>
+        <a href="/index.php?&m=okrobot&c=index">Okrobot</a>
         <!--<a href="<?php echo MYLINK;?>10847">常见问题</a>-->
         </span>
 
@@ -96,7 +96,7 @@
          <ul>
                          
                     <li><a href="<?php echo MYLINK;?>10835">开户流程</a></li>
-                    <li><a href="http://localhost/index.php?&m=ziyuan&c=index&a=show&add=10836">获取模拟账户</a></li>
+                    <li><a href="<?php echo MYLINK;?>10836">获取模拟账户</a></li>
                     <li><a href="<?php echo MYLINK;?>10837">开立实盘账户</a></li>
                     
           </ul>
