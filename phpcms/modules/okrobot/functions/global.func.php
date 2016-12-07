@@ -65,12 +65,17 @@ function object_trade($result){
 //将数据转换成kline数据
 function object_kline($result){
     $kline=array();
-    $kline['create_date']=date("Y/m/d H:i:s",substr($result[0][0],0,strlen($result[0][0])-3));  
-    $kline['start_price']=$result[0][1];
-    $kline['high_price']=$result[0][2];
-    $kline['low_price']=$result[0][3];
-    $kline['over_price']=$result[0][4];
-    $kline['vol']=$result[0][5];
+    if(!empty($result[0][1]))
+    {
+
+        $kline['create_date']=date("Y/m/d H:i:s",substr($result[0][0],0,strlen($result[0][0])-3));  
+        $kline['start_price']=$result[0][1];
+        $kline['high_price']=$result[0][2];
+        $kline['low_price']=$result[0][3];
+        $kline['over_price']=$result[0][4];
+        $kline['vol']=$result[0][5];
+    }
+
     return $kline;
 }
 //刷新数据
@@ -131,9 +136,18 @@ function refresh_userinfo(){
         if(empty($rs))
         {
             //插入数据库
-        $res=$kline_d->insert($kline,true);
+            $res=$kline_db->insert($kline,true);
+            //计算除平均值添加近基准价格中
+            $set=array();
+            $set['base_price']=strval((floatval($kline['high_price'])+floatval($kline['low_price']))/2);
+            $set['uprate']=$set['downrate']="0.005";
+            $set['create_date']=date("Y/m/d H:i:s");
+            $set_db->insert($set,true);
 
         }
+        //判断当前价高根据策略算出下单金额及类型
+        //
+        
         if($res)
         {
             return 0;

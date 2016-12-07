@@ -10,19 +10,21 @@
         {pc:get sql="SELECT * FROM phpcms_okrobot_userinfo where id=(select max(id) from phpcms_okrobot_userinfo)" cache="0" return="data"}
         <h1>我的资产</h1>
         {loop $data $key $val}
-        净资产：{$val[asset_net]}</br>
-        总资产：{$val[asset_total]}</br>
+        净资产：{$val[asset_net]}
+        总资产：{$val[asset_total]}
+        可用人民币：{$val[free_cny]}
+        可用btc：{$val[free_btc]}
         {/loop}
         <h1>市场行情</h1>
         {/pc}
         {pc:get sql="SELECT * FROM phpcms_okrobot_ticker where id=(select max(id) from phpcms_okrobot_ticker)" cache="0" return="data"}
         {loop $data $key $val}
-        买一价：{$val[buy]}</br>
-        卖一价：{$val[sell]}</br>
-        最高价：{$val[high]}</br>
-        最低价：{$val[low]}</br>
-        最新成交价：{$val[lastprice]}</br>
-        24小时成交量：{$val[vol]}</br>
+        买一价：{$val[buy]}
+        卖一价：{$val[sell]}
+        最高价：{$val[high]}
+        最低价：{$val[low]}
+        最新成交价：{$val[lastprice]}
+        24小时成交量：{$val[vol]}
         {/loop}
         {/pc}
         <h1>我的订单</h1>
@@ -36,6 +38,23 @@
         委托时间：{$val[create_date]}
         {/loop}
         {/pc}
+        <h1>行情数据</h1>
+        {pc:get sql="SELECT * FROM phpcms_okrobot_kline where id=(select max(id) from phpcms_okrobot_kline)" cache="0" return="data"}
+        {loop $data $key $val}
+        时间：{$val[create_date]}
+        最高价：{$val[high_price]}
+        最低价：{$val[low_price]}
+        {/loop}
+        {/pc}
+        <h1>设置信息</h1>
+        {pc:get sql="SELECT * FROM phpcms_okrobot_set where id=(select max(id) from phpcms_okrobot_set)" cache="0" return="data"}
+        {loop $data $key $val}
+        基准价：{$val[base_price]}
+        浮动率：{$val[uprate]}
+        时间：{$val[create_date]}
+        {/loop}
+        {/pc}
+
 
     </body>
 </html>
