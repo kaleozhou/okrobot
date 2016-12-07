@@ -62,12 +62,28 @@ function object_trade($result){
     $trade['vol']=$result->trade->vol;
     return $trade;
 }
+//将数据转换成kline数据
+function object_kline($result){
+    $kline=array();
+    $kline['create_date']=date("Y/m/d H:i:s",substr($result[0][0],0,strlen($result[0][0])-3));  
+    $kline['start_price']=$result[0][1];
+    $kline['high_price']=$result[0][2];
+    $kline['low_price']=$result[0][3];
+    $kline['over_price']=$result[0][4];
+    $kline['vol']=$result[0][5];
+    return $kline;
+}
+//刷新数据
 function refresh_userinfo(){
     try{
+        //加载model
         $userinfo_db=pc_base::load_model('okrobot_userinfo_model');
         $ticker_db=pc_base::load_model('okrobot_ticker_model');
         $orderinfo_db=pc_base::load_model('okrobot_orderinfo_model');
         $trade_db=pc_base::load_model('okrobot_trade_model');
+        $set_db=pc_base::load_model('okrobot_set_model');
+        $kline_db=pc_base::load_model('okrobot_kline_model');
+        //创建OKCoinapt客户端
         $client = new OKCoin(new OKCoin_ApiKeyAuthentication(API_KEY, SECRET_KEY));
         //获取用户信息
         $params = array('api_key' => API_KEY);
@@ -79,24 +95,25 @@ function refresh_userinfo(){
         $result = $client -> tickerApi($params);
         $ticker=object_ticker($result);
         $res=$ticker_db->insert($ticker,true);
-        //   $newid=$userinfo_db->insert_id();
+        //$newid=$userinfo_db->insert_id();
         //净资产，总资产，可用资金，冻结资金
-        //   $newuserinfo=$userinfo_db->get_one($newid);
+        // $newuserinfo=$userinfo_db->get_one($newid);
         //获取用户的订单信息
         $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'order_id' => -1);
         $result = $client -> orderInfoApi($params);
         $orders=object_orderinfo($result);
+        //将订单插入数据库
         if(count($orders)>0){
             foreach ($orders as $key) {
                 // 验证数据库是否存在存在
                 $where=array('order_id'=>$key['order_id']);
                 $rs=$orderinfo_db->select($where);
                 if (empty($rs)) {
-                    // code...
+                    // 如果空插入数据
                     $orderinfo_db->insert($key,true);
                 }
                 else {
-
+                    //更新数据
                     $orderinfo_db->update($key,$where);
                 }
             }
@@ -104,7 +121,21 @@ function refresh_userinfo(){
             $data=array('status'=>'-1');
             $orderinfo_db->update($data,true);
         }
-        if($res){
+        //获取比特币上一小时的k线图数据
+        $params = array('symbol' => 'btc_cny', 'type' => '1hour', 'size' => 2);
+        $result = $client -> klineDataApi($params);
+        $kline=object_kline($result);
+        //如果时间戳相等，不插入否则插入
+        $where=array('create_date'=>$kline['create_date']);
+        $rs=$kline_db->select($where);
+        if(empty($rs))
+        {
+            //插入数据库
+        $res=$kline_d->insert($kline,true);
+
+        }
+        if($res)
+        {
             return 0;
         }
         else {
