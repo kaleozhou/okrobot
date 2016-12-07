@@ -29,7 +29,7 @@ class index {
 		$default_style = $sitelist[$siteid]['default_style'];
 		$CATEGORYS = getcache('category_content_'.$siteid,'commons');
 		//include template('content','index',$default_style);
-		include template('ziyuan','index',$default_style);
+		include template('okrobot','index',$default_style);
 	}
 	//内容页
 	public function show() {
