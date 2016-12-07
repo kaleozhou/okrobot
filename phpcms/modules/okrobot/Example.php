@@ -18,12 +18,12 @@ try {
 //	$result = $client -> tradesApi($params);
 //	print_r($result);
 	//获取比特币或莱特币的K线数据
-	//$params = array('symbol' => 'btc_usd', 'type' => '1day', 'size' => 5);
-	//$result = $client -> klineDataApi($params);
+	$params = array('symbol' => 'btc_cny', 'type' => '1hour', 'size' => 2);
+	$result = $client -> klineDataApi($params);
 //	//获取用户信息
 //	$params = array('api_key' => API_KEY);
 //	$result = $client -> userinfoApi($params);
-//	print_r($result);
+	print_r($result);
 	//下单交易
 	//$params = array('api_key' => API_KEY, 'symbol' => 'btc_usd', 'type' => 'buy', 'price' => 1, 'amount' => 1);
 	//$result = $client -> tradeApi($params);

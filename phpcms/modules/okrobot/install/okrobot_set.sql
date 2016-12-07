@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS `phpcms_okrobot_set`;
-CREATE TABLE `phpcms_okrobot_set`(
+CREATE TABLE `phpcms_okrobot_set` (
     `id` bigint(11) NOT NULL AUTO_INCREMENT,
     `baseprice` varchar(256) COMMENT '基准价格',
     `uprate` varchar(256) not null default 0.05 COMMENT '上浮率',

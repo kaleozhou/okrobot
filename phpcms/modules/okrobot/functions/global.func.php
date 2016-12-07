@@ -37,8 +37,10 @@ function object_orderinfo($result){
     foreach ($ordersresult as $key) {
         //取出api结果
         $orderinfo['amount']=$key->amount;  
-        $orderinfo['avg_price']=$key->avg_price;  
-        $orderinfo['create_date']=date("Y/m/d H:i:s");  
+        $orderinfo['deal_amount']=$key->deal_amount;  
+        $orderinfo['avg_price']=$key->avg_price;
+        //由于获取的是java时间戳，去掉后三位  
+        $orderinfo['create_date']=date("Y/m/d H:i:s",substr($key->create_date,0,strlen($key->create_date)-3));  
         $orderinfo['order_id']=$key->order_id;  
         $orderinfo['price']=$key->price;  
         $orderinfo['status']=$key->status;  
@@ -93,9 +95,13 @@ function refresh_userinfo(){
                     // code...
                     $orderinfo_db->insert($key,true);
                 }
+                else {
+
+                    $orderinfo_db->update($key,$where);
+                }
             }
         }else {
-            $data=array('status'=>'1');
+            $data=array('status'=>'-1');
             $orderinfo_db->update($data,true);
         }
         if($res){
