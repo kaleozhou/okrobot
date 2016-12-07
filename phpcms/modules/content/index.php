@@ -28,8 +28,8 @@ class index {
 		$sitelist  = getcache('sitelist','commons');
 		$default_style = $sitelist[$siteid]['default_style'];
 		$CATEGORYS = getcache('category_content_'.$siteid,'commons');
-		//include template('content','index',$default_style);
-		include template('okrobot','index',$default_style);
+		include template('content','index',$default_style);
+
 	}
 	//内容页
 	public function show() {
