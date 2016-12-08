@@ -34,6 +34,9 @@ class index {
             //取得设置信息
             $newset=$this->set_db->get_one('','*','id desc');
             $str=$str."baseprice:".$newset['base_price']."|";
+            //取得kline信息
+            $newkline=$this->kline_db->get_one('','*','id desc');
+            $str=$str."dif".$newkline['dif_price']."|";
             $str=$str."\n";
             printf($str);
     }
