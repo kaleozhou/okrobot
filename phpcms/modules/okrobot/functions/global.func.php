@@ -18,6 +18,13 @@ function object_userinfo($result){
 } 
 //将数据转换成ticker数据
 function object_ticker($result){
+    //加载model
+    $userinfo_db=pc_base::load_model('okrobot_userinfo_model');
+    $ticker_db=pc_base::load_model('okrobot_ticker_model');
+    $orderinfo_db=pc_base::load_model('okrobot_orderinfo_model');
+    $trade_db=pc_base::load_model('okrobot_trade_model');
+    $set_db=pc_base::load_model('okrobot_set_model');
+    $kline_db=pc_base::load_model('okrobot_kline_model');
     $ticker=array();
     $ticker['buy']=$result->ticker->buy;
     $ticker['high']=$result->ticker->high;
@@ -25,6 +32,14 @@ function object_ticker($result){
     $ticker['low']=$result->ticker->low;
     $ticker['sell']=$result->ticker->sell;
     $ticker['vol']=$result->ticker->vol;
+    //计算偏移率
+    $newkline=$kline_db->get_one('','*','id desc');
+    $newset=$set_db->get_one('','*','id desc');
+    $last_price=floatval($ticker['lastprice']);
+    $base_price=floatval($newset['base_price']);
+    $base_dif=floatval($newkline['dif_price']);
+    $base_rate=($last_price-$base_price)/$base_dif;
+    $ticker['base_rate']=strval($base_rate);
     $ticker['tickerdate']=date("Y/m/d H:i:s");
     return $ticker;
 }
@@ -51,32 +66,129 @@ function object_orderinfo($result){
     }
     return $orders;
 }
-//将数据转换成trade数据
-function object_trade($result){
-    $trade=array();
-    $trade['buy']=$result->trade->buy;
-    $trade['high']=$result->trade->high;
-    $trade['last']=$result->trade->last;
-    $trade['low']=$result->trade->low;
-    $trade['sell']=$result->trade->sell;
-    $trade['vol']=$result->trade->vol;
-    return $trade;
-}
 //将数据转换成kline数据
 function object_kline($result){
     $kline=array();
     if(!empty($result[0][1]))
     {
-
         $kline['create_date']=date("Y/m/d H:i:s",substr($result[0][0],0,strlen($result[0][0])-3));  
         $kline['start_price']=$result[0][1];
         $kline['high_price']=$result[0][2];
         $kline['low_price']=$result[0][3];
         $kline['over_price']=$result[0][4];
         $kline['vol']=$result[0][5];
+        $kline['dif_price']=floatval($kline['high_price'])-floatval($kline['low_price']);
     }
-
     return $kline;
+}
+//下单函数
+function autotrade(){
+    try{
+        //加载model
+        $userinfo_db=pc_base::load_model('okrobot_userinfo_model');
+        $ticker_db=pc_base::load_model('okrobot_ticker_model');
+        $orderinfo_db=pc_base::load_model('okrobot_orderinfo_model');
+        $trade_db=pc_base::load_model('okrobot_trade_model');
+        $set_db=pc_base::load_model('okrobot_set_model');
+        $kline_db=pc_base::load_model('okrobot_kline_model');
+        //创建OKCoinapt客户端
+        $client = new OKCoin(new OKCoin_ApiKeyAuthentication(API_KEY, SECRET_KEY));
+        //获取当前行情和基最新成交价价
+        $newticker=$ticker_db->get_one('','*','id desc');
+        $lastprice=floatval($newticker['lastprice']);
+        //获取kline前一小时的记录
+        $newkline=$kline_db->get_one('','*','id desc');
+        $base_dif=floatval($newkline['dif_price']);
+        //获取设置
+        $newset=$set_db->get_one('','*','id desc');
+        $base_price=floatval($newset['base_price']);
+        $uprate=floatval($newset['uprate']);
+        $downrate=floatval($newset['downrate']);
+        //获取当前用户信息
+        $newuserinfo=$userinfo_db->get_one('','*','id desc');
+        $free_cny=floatval($newuserinfo['free_cny']);
+        $free_btc=floatval($newuserinfo['free_btc']);
+        $freezed_btc=floatval($newuserinfo['freezed_btc']);
+        $asset_total=floatval($newuserinfo['asset_total']);
+        //创建订单
+        $trade=array();
+        //判断接下来是买还是卖
+        $dif=$lastprice - $base_price;
+        $autoresult_order_id="";
+
+        if ($dif>0)
+        {
+            // 应该下卖单
+            //计算浮动率rate
+            $rate=2*$dif/$base_dif;
+            //判断是否达到出发值
+            if($rate>$uprate)
+            {
+                //计算卖出btc的数量
+                $amount=$free_btc-($free_btc+$freezed_btc)*(1-$rate);
+                if ($amount>=$free_btc) {
+                    // code...
+                    $amount=$free_btc;
+                }
+                if($amount>0.01&&$amount<=$free_btc)
+                {
+                    $symbol='btc_cny';
+                    $tradetype='sell_market';
+                    $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'amount' => $amount);
+                    $result = $client -> tradeApi($params);
+                    //插入数据库
+                    $trade['amount']=strval($amount);
+                    $trade['symbol']=$symbol;
+                    $trade['tradetype']=$tradetype;
+                    $trade['result']=$result->result;
+                    if ($result['result'])
+                    {
+                        $autoresult_order_id=$trade['order_id']=$result->order_id;
+                    }
+                    $trade_db->insert($trade,true);
+                }
+            }
+        }
+        else
+        {
+            //应该下买单
+            //计算浮动率rate
+            $dif=$base_price-$lastprice;
+            $rate=2*$dif/$base_dif;
+            //判断是否达到出发值
+            if($rate>$downrate)
+                //if(false)
+            {
+                //计算买入金额
+                $price=$free_cny-$asset_total*(1-$rate);
+                if ($price>=$free_cny) {
+                    // 如果大于证明偏离过大
+                    $price=$free_cny;
+                }
+                if($price>=60&&$price<=$free_cny)
+                {
+                    $symbol='btc_cny';
+                    $tradetype='buy_market';
+                    $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'price' => $price);
+                    $result = $client -> tradeApi($params);
+                    //插入数据库
+                    $trade['price']=strval($price);
+                    $trade['symbol']=$symbol;
+                    $trade['tradetype']=$tradetype;
+                    $trade['result']=$result->result;
+                    if ($result['result'])
+                    {
+                        $autoresult_order_id=$trade['order_id']=$result->order_id;
+                    }
+                    $trade_db->insert($trade,true);
+                }
+            }
+        }
+        return $autoresult_order_id;
+    }catch(Exception $e)
+    {
+        return $e;
+    }
 }
 //刷新数据
 function refresh_userinfo(){
@@ -104,8 +216,12 @@ function refresh_userinfo(){
         //净资产，总资产，可用资金，冻结资金
         // $newuserinfo=$userinfo_db->get_one($newid);
         //获取用户的订单信息
-        $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'order_id' => -1);
-        $result = $client -> orderInfoApi($params);
+       // $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'order_id' => -1);
+       // $result = $client -> orderInfoApi($params);
+        //批量获取用户订单
+        $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '5');
+        $result = $client -> orderHistoryApi($params);
+
         $orders=object_orderinfo($result);
         //将订单插入数据库
         if(count($orders)>0){
@@ -140,22 +256,13 @@ function refresh_userinfo(){
             //计算除平均值添加近基准价格中
             $set=array();
             $set['base_price']=strval((floatval($kline['high_price'])+floatval($kline['low_price']))/2);
-            $set['uprate']=$set['downrate']="0.005";
+            $set['uprate']=$set['downrate']="0.45";
             $set['create_date']=date("Y/m/d H:i:s");
             $set_db->insert($set,true);
-
         }
-        //判断当前价高根据策略算出下单金额及类型
-        //
-        
-        if($res)
-        {
-            return 0;
-        }
-        else {
-            // code... 
-            return 1;
-        }
+        //自动交易
+//        $res=autotrade();
+        return $res;
     }
     catch (Exception $e)
     {

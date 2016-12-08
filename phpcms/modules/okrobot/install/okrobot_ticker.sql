@@ -6,6 +6,7 @@ CREATE TABLE `phpcms_okrobot_ticker` (
     `lastprice` varchar(256) COMMENT '最新成交价',
     `low` varchar(256) COMMENT '最低价',
     `sell` varchar(256) COMMENT '卖一价',
+    `base_rate` varchar(256) COMMENT '基准偏移率',
     `vol` varchar(256) COMMENT '最近24小时成交量' ,
     `tickerdate` varchar(256) COMMENT '服务器返回时间',
     PRIMARY KEY (`id`)

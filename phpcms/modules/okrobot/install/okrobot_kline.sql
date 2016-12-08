@@ -6,6 +6,7 @@ CREATE TABLE `phpcms_okrobot_kline` (
     `high_price` varchar(256)  COMMENT '最高价',
     `low_price` varchar(256) COMMENT '最低价',
     `over_price` varchar(256) COMMENT '收价',
+    `dif_price` varchar(256) COMMENT '差价',
     `vol` varchar(256) COMMENT '成交量',
     PRIMARY KEY (`id`)
 ) TYPE=MyISAM;

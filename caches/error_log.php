@@ -1282,3 +1282,326 @@
 <?php exit;?>12-07 17:19:06 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
 <?php exit;?>12-07 17:18:56 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (Connection timed out) | phpcms/libs/classes/http.class.php | 84
 <?php exit;?>12-07 17:19:06 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (Connection timed out) | phpcms/libs/classes/http.class.php | 84
+<?php exit;?>12-08 11:23:37 | 2 | unlink(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): Permission denied | phpcms/libs/functions/dir.func.php | 152
+<?php exit;?>12-08 11:23:37 | 2 | rmdir(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/): Permission denied | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>12-08 11:23:37 | 2 | file_put_contents(/home/kaleo/www/okrobot/phpcms/templates/default/config.php): failed to open stream: Permission denied | phpcms/modules/admin/classes/module_api.class.php | 197
+<?php exit;?>12-08 11:23:38 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 11:23:38 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 11:23:38 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 11:23:38 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 11:23:39 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 11:23:39 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 11:23:39 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 11:23:39 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 11:23:39 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 11:23:39 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 11:23:39 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 11:23:39 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 11:23:44 | 2 | copy(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): failed to open stream: Permission denied | phpcms/libs/functions/dir.func.php | 54
+<?php exit;?>12-08 11:23:44 | 2 | chmod(): Operation not permitted | phpcms/libs/functions/dir.func.php | 55
+<?php exit;?>12-08 11:23:48 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 11:23:48 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 11:23:48 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 11:23:48 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 11:23:49 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 11:23:49 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 11:23:49 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 11:23:49 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 11:23:49 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 11:23:49 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 11:23:49 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 11:23:49 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 11:44:42 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 134
+<?php exit;?>12-08 11:44:46 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 134
+<?php exit;?>12-08 11:44:50 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 134
+<?php exit;?>12-08 11:44:40 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 134
+<?php exit;?>12-08 11:44:56 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 134
+<?php exit;?>12-08 11:45:00 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 134
+<?php exit;?>12-08 11:50:02 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:04 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:07 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:13 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:17 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:19 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:15 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:23 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:27 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:33 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:37 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:39 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:43 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:21 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:25 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:55 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:57 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:51 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:04 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:06 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:00 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:08 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:10 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:50:41 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:14 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:20 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:24 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:26 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:22 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:30 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:34 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:38 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:16 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:44 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:47 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:51 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:57 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:55 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:40 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:59 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:52:01 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:52:07 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:52:03 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:52:15 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:52:05 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:36 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:52:09 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:52:13 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:12 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:14 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:16 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:18 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:21 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:23 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:25 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:27 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:51:53 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:29 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:31 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:33 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:35 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:37 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:39 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:41 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:43 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:45 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:47 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:49 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:51 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:53 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:55 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:57 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:53:59 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:01 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:03 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:06 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:08 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:10 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:12 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:14 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:16 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:18 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:20 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:22 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:24 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:26 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:28 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:30 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:32 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:34 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:36 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:38 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:40 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:42 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:44 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:46 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:48 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:50 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:53 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:55 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:57 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:54:59 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:01 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:03 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:05 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:07 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:09 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:11 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:13 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:15 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:17 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:19 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:21 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:23 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 141
+<?php exit;?>12-08 11:55:25 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:27 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:29 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:31 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:33 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:35 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:38 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:40 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:42 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:44 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:46 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:48 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:50 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:52 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:54 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:56 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:55:58 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:00 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:02 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:04 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:06 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:08 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:10 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:12 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:14 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:16 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:18 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:20 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:23 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:25 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:27 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:29 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:31 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:33 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:35 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:37 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:39 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:41 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:43 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:45 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:47 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:49 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:51 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:53 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:55 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:57 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:56:59 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:01 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:03 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:05 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:07 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:09 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:11 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:14 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:16 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:18 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:20 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:22 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:24 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:26 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:28 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:30 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:32 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:34 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:36 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:38 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:40 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:42 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:44 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:46 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:48 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:50 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:52 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:54 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:57:56 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:59:53 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:59:55 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:59:57 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 11:59:59 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:01 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:03 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:05 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:08 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:10 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:12 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:14 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:16 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:18 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:20 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:22 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:24 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:26 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:28 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:30 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:32 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:34 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:36 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:38 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:40 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:42 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:44 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:46 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:48 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:51 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:53 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:55 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:57 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:00:59 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:01:01 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:01:03 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:01:05 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:01:07 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:01:09 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:01:11 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:32 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:34 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:36 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:38 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:40 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:42 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:44 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:46 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:48 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:50 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 12:05:52 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 13:13:41 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 13:13:44 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 13:13:46 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:24 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:26 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:28 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:30 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:32 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:34 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:36 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:38 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:40 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:25:43 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 14:29:36 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 140
+<?php exit;?>12-08 15:08:53 | 2 | unlink(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): Permission denied | phpcms/libs/functions/dir.func.php | 152
+<?php exit;?>12-08 15:08:53 | 2 | rmdir(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/): Permission denied | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>12-08 15:08:53 | 2 | file_put_contents(/home/kaleo/www/okrobot/phpcms/templates/default/config.php): failed to open stream: Permission denied | phpcms/modules/admin/classes/module_api.class.php | 197
+<?php exit;?>12-08 15:08:55 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 15:08:55 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 15:08:55 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 15:08:55 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 15:08:56 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 15:08:56 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 15:08:56 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 15:08:56 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 15:08:57 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 15:08:57 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 15:08:57 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 15:08:57 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 15:09:03 | 2 | copy(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): failed to open stream: Permission denied | phpcms/libs/functions/dir.func.php | 54
+<?php exit;?>12-08 15:09:03 | 2 | chmod(): Operation not permitted | phpcms/libs/functions/dir.func.php | 55
+<?php exit;?>12-08 15:09:07 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 15:09:07 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 15:09:07 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 15:09:07 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-08 15:09:07 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 15:09:07 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 15:09:07 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 15:09:07 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-08 15:09:08 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 15:09:08 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 15:09:08 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 15:09:08 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-08 15:09:15 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 157
+<?php exit;?>12-08 15:09:15 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 41
+<?php exit;?>12-08 15:51:43 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 41
+<?php exit;?>12-08 16:47:05 | 2 | explode() expects parameter 2 to be string, array given | phpcms/libs/classes/db_mysqli.class.php | 135
+<?php exit;?>12-08 16:47:05 | 2 | array_walk() expects parameter 1 to be array, null given | phpcms/libs/classes/db_mysqli.class.php | 136
+<?php exit;?>12-08 16:47:05 | 2 | implode(): Invalid arguments passed | phpcms/libs/classes/db_mysqli.class.php | 137

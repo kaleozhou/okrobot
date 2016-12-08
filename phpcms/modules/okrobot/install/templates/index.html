@@ -2,58 +2,80 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta http-equiv="refresh" content="2">
+        <meta http-equiv="refresh" content="5">
         <title>okcoin 自动交易机器人</title>
+<style type="text/css">
 
+td.red {color: red;}
+
+
+</style>
     </head>
     <body>
         {pc:get sql="SELECT * FROM phpcms_okrobot_userinfo where id=(select max(id) from phpcms_okrobot_userinfo)" cache="0" return="data"}
-        <h1>我的资产</h1>
+        <h5>我的资产</h5>
+        <table border="1">
         {loop $data $key $val}
-        净资产：{$val[asset_net]}
-        总资产：{$val[asset_total]}
-        可用人民币：{$val[free_cny]}
-        可用btc：{$val[free_btc]}
-        {/loop}
-        <h1>市场行情</h1>
-        {/pc}
-        {pc:get sql="SELECT * FROM phpcms_okrobot_ticker where id=(select max(id) from phpcms_okrobot_ticker)" cache="0" return="data"}
-        {loop $data $key $val}
-        买一价：{$val[buy]}
-        卖一价：{$val[sell]}
-        最高价：{$val[high]}
-        最低价：{$val[low]}
-        最新成交价：{$val[lastprice]}
-        24小时成交量：{$val[vol]}
+        <td class="red">净资产：{$val[asset_net]}</td>
+        <td>总资产：{$val[asset_total]}</td>
+        <td>可用人民币：{$val[free_cny]}</td>
+        <td>可用btc：{$val[free_btc]}</td>
+        <td>冻结人民币：{$val[freezed_cny]}</td>
+        <td>冻结btc：{$val[freezed_btc]}</td>
         {/loop}
         {/pc}
-        <h1>我的订单</h1>
-        {pc:get sql="SELECT * FROM phpcms_okrobot_orderinfo where status!='-1'" cache="0" return="data"}
-        {loop $data $key $val}
-        订单id：{$val[order_id]}
-        委托数量：{$val[amount]}
-        委托价格：{$val[price]}
-        成交数量：{$val[deal_amount]}
-        平均成交价：{$val[avg_price]}
-        委托时间：{$val[create_date]}
-        {/loop}
-        {/pc}
-        <h1>行情数据</h1>
-        {pc:get sql="SELECT * FROM phpcms_okrobot_kline where id=(select max(id) from phpcms_okrobot_kline)" cache="0" return="data"}
-        {loop $data $key $val}
-        时间：{$val[create_date]}
-        最高价：{$val[high_price]}
-        最低价：{$val[low_price]}
-        {/loop}
-        {/pc}
-        <h1>设置信息</h1>
+        </table>
+        <table border="1">
         {pc:get sql="SELECT * FROM phpcms_okrobot_set where id=(select max(id) from phpcms_okrobot_set)" cache="0" return="data"}
         {loop $data $key $val}
-        基准价：{$val[base_price]}
-        浮动率：{$val[uprate]}
-        时间：{$val[create_date]}
+        <td class="red">基准价：{$val[base_price]}</td>
+        <td>上浮动率：{$val[uprate]}</td>
+        <td>下浮动率：{$val[uprate]}</td>
+        <td>时间：{$val[create_date]}</td>
         {/loop}
         {/pc}
+        </table>
+        <h5>市场行情</h5>
+        <table border="1">
+        {pc:get sql="SELECT * FROM phpcms_okrobot_ticker where id=(select max(id) from phpcms_okrobot_ticker)" cache="0" return="data"}
+        {loop $data $key $val}
+        <td class="red">最新成交价：{$val[lastprice]}</td>
+        <td>买一价：{$val[buy]}</td>
+        <td>卖一价：{$val[sell]}</td>
+        <td>最高价：{$val[high]}</td>
+        <td>最低价：{$val[low]}</td>
+        <td>偏离率：{$val[base_rate]}</td>
+        <td>24小时成交量：{$val[vol]}</td>
+        {/loop}
+        {/pc}
+        </table>
+        <h5>前一小时统计</h5>
+        <table border="1">
+        {pc:get sql="SELECT * FROM phpcms_okrobot_kline where id=(select max(id) from phpcms_okrobot_kline)" cache="0" return="data"}
+        {loop $data $key $val}
+        <td class="red">最高价：{$val[high_price]}</td>
+        <td class="red">最低价：{$val[low_price]}</td>
+        <td class="red">差价：{$val[dif_price]}</td>
+        <td>时间：{$val[create_date]}</td>
+        {/loop}
+        {/pc}
+        </table>
+        <h5>我的订单</h5>
+        <table border="1">
+        {pc:get sql="SELECT * FROM phpcms_okrobot_orderinfo where status!='-1' order by id desc" cache="0" return="data"}
+        {loop $data $key $val}
+        <tr>
+            <td> 订单id：{$val[order_id]}</td>
+            <td>委托数量：{$val[amount]}</td>
+            <td>委托价格：{$val[price]}</td>
+            <td>成交数量：{$val[deal_amount]}</td>
+            <td>平均成交价：{$val[avg_price]}</td>
+            <td>委托类型：{$val[ordertype]}</td>
+            <td>委托时间：{$val[create_date]}</br>
+        </tr>
+        {/loop}
+        {/pc}
+        </table>
 
 
     </body>
