@@ -256,7 +256,7 @@ function refresh_userinfo(){
             //计算除平均值添加近基准价格中
             $set=array();
             $set['base_price']=strval((floatval($kline['high_price'])+floatval($kline['low_price']))/2);
-            $set['uprate']=$set['downrate']="0.45";
+            $set['uprate']=$set['downrate']="0.25";
             $set['create_date']=date("Y/m/d H:i:s");
             $set_db->insert($set,true);
         }
