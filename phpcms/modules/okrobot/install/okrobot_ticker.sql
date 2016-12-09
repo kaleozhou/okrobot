@@ -3,7 +3,7 @@ CREATE TABLE `phpcms_okrobot_ticker` (
     `id` bigint(11) NOT NULL AUTO_INCREMENT,
     `buy` float(10,2) COMMENT '买一价',
     `high` float(10,2) COMMENT '最高价',
-    `lastprice` float(10,2) COMMENT '最新成交价',
+    `last_price` float(10,2) COMMENT '最新成交价',
     `low` float(10,2) COMMENT '最低价',
     `sell` float(10,2) COMMENT '卖一价',
     `base_rate` float(10,2) COMMENT '基准偏移率',

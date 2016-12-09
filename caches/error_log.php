@@ -1682,3 +1682,5 @@
 <?php exit;?>12-09 20:39:04 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
 <?php exit;?>12-09 20:39:04 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
 <?php exit;?>12-09 20:39:04 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 20:41:09 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 41
+<?php exit;?>12-09 20:41:14 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 41
