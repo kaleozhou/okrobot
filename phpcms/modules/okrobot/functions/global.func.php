@@ -226,7 +226,7 @@ function refresh_userinfo(){
         // $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'order_id' => -1);
         // $result = $client -> orderInfoApi($params);
         //批量获取用户订单
-        $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '5');
+        $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '15');
         $result = $client -> orderHistoryApi($params);
 
         $orders=object_orderinfo($result);
@@ -270,7 +270,7 @@ function refresh_userinfo(){
         $set=array();
         //获取上次成交金额
         $where=array('status'=>'2');
-        $lastorder=$orderinfo_db->get_one($where,'*','id desc');
+        $lastorder=$orderinfo_db->get_one($where,'*','create_date desc');
         $set['my_last_price']=$lastorder['avg_price'];
         //根据kline计算价值波数值20条信息
         //$n_price=$kline_db->query("select avg(dif_price)from v9_okrobot_kline order by id desc limit 0,20");
