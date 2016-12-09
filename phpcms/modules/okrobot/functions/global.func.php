@@ -107,6 +107,7 @@ function autotrade(){
         $newset=$set_db->get_one('','*','id desc');
         $my_last_price=$newset['my_last_price'];
         $unit=$newset['unit'];
+        $n_price=$newset['n_price'];
         $uprate=$newset['uprate'];
         $downrate=$newset['downrate'];
         //获取当前用户信息
