@@ -1715,3 +1715,49 @@
 <?php exit;?>12-09 20:43:18 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
 <?php exit;?>12-09 20:43:18 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
 <?php exit;?>12-09 20:43:23 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 41
+<?php exit;?>12-09 23:42:52 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-09 23:42:59 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-09 23:43:07 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-09 23:43:15 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-09 23:44:22 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-09 23:44:57 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-09 23:46:26 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-09 23:59:53 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-10 00:00:03 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-10 00:00:10 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-10 00:00:18 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-10 00:00:25 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-10 00:00:32 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-10 00:00:40 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-10 00:00:48 | 2 | date() expects at least 1 parameter, 0 given | phpcms/modules/okrobot/index.php | 25
+<?php exit;?>12-10 00:11:21 | 4096 | Object of class stdClass could not be converted to string | phpcms/modules/okrobot/functions/global.func.php | 146
+<?php exit;?>12-10 00:37:10 | 2 | unlink(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): Permission denied | phpcms/libs/functions/dir.func.php | 152
+<?php exit;?>12-10 00:37:10 | 2 | rmdir(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/): Permission denied | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>12-10 00:37:10 | 2 | file_put_contents(/home/kaleo/www/okrobot/phpcms/templates/default/config.php): failed to open stream: Permission denied | phpcms/modules/admin/classes/module_api.class.php | 197
+<?php exit;?>12-10 00:37:12 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-10 00:37:12 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-10 00:37:12 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-10 00:37:12 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-10 00:37:12 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-10 00:37:12 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-10 00:37:12 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-10 00:37:12 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-10 00:37:13 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-10 00:37:13 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-10 00:37:13 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-10 00:37:13 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-10 00:37:31 | 2 | copy(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): failed to open stream: Permission denied | phpcms/libs/functions/dir.func.php | 54
+<?php exit;?>12-10 00:37:31 | 2 | chmod(): Operation not permitted | phpcms/libs/functions/dir.func.php | 55
+<?php exit;?>12-10 00:37:35 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-10 00:37:35 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-10 00:37:35 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-10 00:37:35 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-10 00:37:35 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-10 00:37:35 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-10 00:37:35 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-10 00:37:35 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-10 00:37:36 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-10 00:37:36 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-10 00:37:36 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-10 00:37:36 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-10 00:38:10 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 41

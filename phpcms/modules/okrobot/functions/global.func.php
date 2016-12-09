@@ -133,7 +133,7 @@ function autotrade(){
                 //判断是否达到触发值
                 //如果当前价格$last_price低于$my_last_price价值波动一个$n_price,
                 
-                if(abs($dif)>$n_price)
+                if(abs($dif)>=$n_price)
                 {
                     //计算卖出btc的数量
                     $amount=$free_btc;
@@ -150,7 +150,7 @@ function autotrade(){
                         $trade['result']=strval($result->result);
                         if ($result['result']=='true')
                         {
-                            $autoresult_order_id=$trade['order_id']=$result->order_id;
+                    $autoresult_order_id=$trade['order_id']=$result->order_id;
                         }
                         $trade_db->insert($trade,true);
                     }
@@ -181,7 +181,7 @@ function autotrade(){
                         $trade['result']=strval($result->result);
                         if ($result['result']=='true')
                         {
-                            $autoresult_order_id=$trade['order_id']=$result->order_id;
+                         $autoresult_order_id=$trade['order_id']=$result->order_id;
                         }
                         $trade_db->insert($trade,true);
                     }
