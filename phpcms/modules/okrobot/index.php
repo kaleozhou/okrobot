@@ -32,19 +32,18 @@ class index {
             $newuserinfo=$this->userinfo_db->get_one('',$data,'id desc');
             foreach ($newuserinfo as $key=>$value) {
                 // $str=$str.$key.":".$value."|";
-                $str=$str.$value."|";
+                $str=$str.$key.':'.$value."|";
             }
             //取得行情信息
             $newticker=$this->ticker_db->get_one('','*','id desc');
-            $str=$str."price:".$newticker['last_price']."|";
+            $str=$str.'最新价:'."price:".$newticker['last_price']."|";
             //取得设置信息
             $newset=$this->set_db->get_one('','*','id desc');
-            $str=$str.$newset['my_last_price']."|";
-            $str=$str.$newset['create_date']."|";
-            $str=$str.$newticker['n_price']."|";
+            $str=$str.'上次成交价:'.$newset['my_last_price']."|";
+            $str=$str.'波动:'.$newticker['n_price']."|";
             //取得kline信息
             $newkline=$this->kline_db->get_one('','*','id desc');
-            $str=$str.$newkline['dif_price']."|";
+            $str=$str.'差价:'.$newkline['dif_price']."|";
             $str=$str."\n";
         }
         else
