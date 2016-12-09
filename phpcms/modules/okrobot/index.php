@@ -36,12 +36,12 @@ class index {
             }
             //取得行情信息
             $newticker=$this->ticker_db->get_one('','*','id desc');
-            $str=$str."price:".$newticker['lastprice']."|";
+            $str=$str."price:".$newticker['last_price']."|";
             //取得设置信息
             $newset=$this->set_db->get_one('','*','id desc');
-            $str=$str.$newset['base_price']."|";
+            $str=$str.$newset['my_last_price']."|";
             $str=$str.$newset['create_date']."|";
-            $str=$str.$newticker['base_rate']."|";
+            $str=$str.$newticker['n_price']."|";
             //取得kline信息
             $newkline=$this->kline_db->get_one('','*','id desc');
             $str=$str.$newkline['dif_price']."|";

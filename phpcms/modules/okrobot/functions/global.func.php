@@ -28,18 +28,18 @@ function object_ticker($result){
     $ticker=array();
     $ticker['buy']=$result->ticker->buy;
     $ticker['high']=$result->ticker->high;
-    $ticker['lastprice']=$result->ticker->last;
+    $ticker['last_price']=$result->ticker->last;
     $ticker['low']=$result->ticker->low;
     $ticker['sell']=$result->ticker->sell;
     $ticker['vol']=$result->ticker->vol;
     //计算偏移率
     $newkline=$kline_db->get_one('','*','id desc');
     $newset=$set_db->get_one('','*','id desc');
-    $last_price=$ticker['lastprice'];
-    $base_price=$newset['base_price'];
-    $base_dif=$newkline['dif_price'];
-    $base_rate=($last_price-$base_price)/$base_dif;
-    $ticker['base_rate']=strval($base_rate);
+    $last_price=$ticker['last_price'];
+    $my_last_price=$newset['my_last_price'];
+    $n_price=$newset['n_price'];
+    $base_rate=($last_price-$my_last_price)/$my_last_price;
+    $ticker['base_rate']=$base_rate;
     $ticker['tickerdate']=date("Y/m/d H:i:s");
     return $ticker;
 }
@@ -99,13 +99,14 @@ function autotrade(){
         $client = new OKCoin(new OKCoin_ApiKeyAuthentication(API_KEY, SECRET_KEY));
         //获取当前行情和基最新成交价价
         $newticker=$ticker_db->get_one('','*','id desc');
-        $lastprice=$newticker['lastprice'];
+        $last_price=$newticker['last_price'];
         //获取kline前一小时的记录
         $newkline=$kline_db->get_one('','*','id desc');
         $base_dif=$newkline['dif_price'];
         //获取设置
         $newset=$set_db->get_one('','*','id desc');
-        $base_price=$newset['base_price'];
+        $my_last_price=$newset['my_last_price'];
+        $unit=$newset['unit'];
         $uprate=$newset['uprate'];
         $downrate=$newset['downrate'];
         //获取当前用户信息
@@ -118,43 +119,37 @@ function autotrade(){
         //创建订单
         $trade=array();
         //判断接下来是买还是卖
-        $dif=$lastprice - $base_price;
+        $dif=$last_price - $my_last_price;
         $autoresult_order_id="";
         //设置止盈止损
         $downline=DOWNLINE;
         $upline=UPLINE;
-        if (false)
-        //if ($asset_net>$downline&&$asset_net<$upline)
+        if ($asset_net>$downline&&$asset_net<$upline)
         {
-            // code...
-            if ($dif>0)
+            if ($dif<0)
             {
-                // 应该下卖单
-                //计算浮动率rate
-                $rate=2*$dif/$base_dif;
-                //判断是否达到出发值
-                if($rate>$uprate)
+                //应该价格在下降，下卖单
+                //判断是否达到触发值
+                //如果当前价格$last_price低于$my_last_price价值波动一个$n_price,
+                
+                if(abs($dif)>$n_price)
                 {
                     //计算卖出btc的数量
-                    $amount=$free_btc-($free_btc+$freezed_btc)*(1-$rate);
-                    if ($amount>=$free_btc) {
-                        // code...
-                        $amount=$free_btc;
-                    }
+                    $amount=$free_btc;
                     if($amount>0.01&&$amount<=$free_btc)
                     {
                         $symbol='btc_cny';
                         $tradetype='sell_market';
                         $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'amount' => $amount);
-              //          $result = $client->tradeApi($params);
+                        $result = $client->tradeApi($params);
                         //插入数据库
-                        $trade['amount']=strval($amount);
+                        $trade['amount']=$amount;
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
                         $trade['result']=strval($result->result);
                         if ($result['result']=='true')
                         {
-                            $autoresult_order_id=$trade['order_id']=strval($result->order_id);
+                            $autoresult_order_id=$trade['order_id']=$result->order_id;
                         }
                         $trade_db->insert($trade,true);
                     }
@@ -162,17 +157,13 @@ function autotrade(){
             }
             else
             {
-                //应该下买单
-                //计算浮动率rate
-                $dif=$base_price-$lastprice;
-                $rate=2*$dif/$base_dif;
+                //价格在上升，辖买单
                 //判断是否达到出发值
-                if($rate>$downrate)
-                    //if(false)
+                if(abs($dif)>=0.3*$n_price)
                 {
                     //计算买入金额
-                    $price=$free_cny-$asset_total*(1-$rate);
-                    if ($price>=$free_cny) {
+                    $price=$asset_total*$unit;
+                    if ($price>$free_cny) {
                         // 如果大于证明偏离过大
                         $price=$free_cny;
                     }
@@ -181,15 +172,15 @@ function autotrade(){
                         $symbol='btc_cny';
                         $tradetype='buy_market';
                         $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'price' => $price);
-                //        $result = $client -> tradeApi($params);
+                        $result = $client -> tradeApi($params);
                         //插入数据库
-                        $trade['price']=strval($price);
+                        $trade['price']=$price;
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
                         $trade['result']=strval($result->result);
                         if ($result['result']=='true')
                         {
-                            $autoresult_order_id=$trade['order_id']=strval($result->order_id);
+                            $autoresult_order_id=$trade['order_id']=$result->order_id;
                         }
                         $trade_db->insert($trade,true);
                     }
