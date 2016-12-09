@@ -25,10 +25,10 @@ try {
 //	$result = $client -> userinfoApi($params);
 //	print_r($result);
 	//下单交易
-	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'type' => 'buy_market', 'price' => 60);
-	$result = $client -> tradeApi($params);
-	var_dump($result);
-    printf($result);
+//	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'type' => 'buy_market', 'price' => 60);
+//	$result = $client -> tradeApi($params);
+//	var_dump($result);
+//    printf($result);
 	//批量下单
 	//$params = array('api_key' => API_KEY, 'symbol' => 'btc_usd', 'type' => 'buy', 'orders_data' => "[;price:3,amount:5,type:'sell'var_dump($result);,;price:3,amount:3,type:'buy'var_dump($result);,;price:3,amount:3var_dump($result);]");
 	//$result = $client -> batchTradeApi($params);

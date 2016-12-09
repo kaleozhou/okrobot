@@ -119,7 +119,9 @@ function autotrade(){
         //设置止盈止损
         $downline=DOWNLINE;
         $upline=UPLINE;
-        if ($asset_net>$downline&&$asset_net<$upline) {
+        //if (false)
+        if ($asset_net>$downline&&$asset_net<$upline)
+        {
             // code...
             if ($dif>0)
             {
@@ -140,7 +142,7 @@ function autotrade(){
                         $symbol='btc_cny';
                         $tradetype='sell_market';
                         $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'amount' => $amount);
-                        $result = $client -> tradeApi($params);
+                        $result = $client->tradeApi($params);
                         //插入数据库
                         $trade['amount']=strval($amount);
                         $trade['symbol']=$symbol;
@@ -225,9 +227,6 @@ function refresh_userinfo(){
         $result = $client -> tickerApi($params);
         $ticker=object_ticker($result);
         $res=$ticker_db->insert($ticker,true);
-        //$newid=$userinfo_db->insert_id();
-        //净资产，总资产，可用资金，冻结资金
-        // $newuserinfo=$userinfo_db->get_one($newid);
         //获取用户的订单信息
         // $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'order_id' => -1);
         // $result = $client -> orderInfoApi($params);
@@ -270,7 +269,8 @@ function refresh_userinfo(){
             //计算除平均值添加近基准价格中
             $set=array();
             $set['base_price']=strval((floatval($kline['high_price'])+floatval($kline['low_price']))/2);
-            $set['uprate']=$set['downrate']="0.25";
+            $set['uprate']=UPRATE;
+            $set['downrate']=DOWNRATE;
             $set['create_date']=$kline['create_date'];
             $set_db->insert($set,true);
         }

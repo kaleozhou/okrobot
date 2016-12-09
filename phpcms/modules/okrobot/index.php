@@ -3,8 +3,10 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 require_once (dirname(__FILE__) . '/OKCoin/OKCoin.php');
 const API_KEY = "7573fd61-7b8a-4132-814b-9536325c8460";
 const SECRET_KEY = "461D47D0FE52B28288E1285D8D899812";
-const DOWNLINE=4200;
-const UPLINE=10000;
+const DOWNLINE=4200;//初始化止损值
+const UPLINE=10000;//止盈值
+const UPRATE=0.35;//
+const DOWNRATE=0.25;
 class index {
     private $userinfo_db;
     function __construct() {
@@ -28,7 +30,7 @@ class index {
             $data="asset_net,asset_total,free_cny,free_btc";
             $newuserinfo=$this->userinfo_db->get_one('',$data,'id desc');
             foreach ($newuserinfo as $key=>$value) {
-               // $str=$str.$key.":".$value."|";
+                // $str=$str.$key.":".$value."|";
                 $str=$str.$value."|";
             }
             //取得行情信息
@@ -51,6 +53,6 @@ class index {
                 $str='已经达到止损线！';
             }
         }
-            printf($str);
+        printf($str);
     }
 }
