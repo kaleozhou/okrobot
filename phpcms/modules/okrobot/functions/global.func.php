@@ -145,10 +145,10 @@ function autotrade(){
                         $trade['amount']=strval($amount);
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
-                        $trade['result']=$result->result;
-                        if ($result['result'])
+                        $trade['result']=strval($result->result);
+                        if ($result['result']=='true')
                         {
-                            $autoresult_order_id=$trade['order_id']=$result->order_id;
+                            $autoresult_order_id=$trade['order_id']=strval($result->order_id);
                         }
                         $trade_db->insert($trade,true);
                     }
@@ -180,10 +180,10 @@ function autotrade(){
                         $trade['price']=strval($price);
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
-                        $trade['result']=$result->result;
-                        if ($result['result'])
+                        $trade['result']=strval($result->result);
+                        if ($result['result']=='true')
                         {
-                            $autoresult_order_id=$trade['order_id']=$result->order_id;
+                            $autoresult_order_id=$trade['order_id']=strval($result->order_id);
                         }
                         $trade_db->insert($trade,true);
                     }

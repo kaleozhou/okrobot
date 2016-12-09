@@ -25,9 +25,10 @@ try {
 //	$result = $client -> userinfoApi($params);
 //	print_r($result);
 	//下单交易
-//	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'type' => 'sell', 'price' => 11000,'amount'=>'1');
-//	$result = $client -> tradeApi($params);
-//	var_dump($result);
+	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'type' => 'buy_market', 'price' => 60);
+	$result = $client -> tradeApi($params);
+	var_dump($result);
+    printf($result);
 	//批量下单
 	//$params = array('api_key' => API_KEY, 'symbol' => 'btc_usd', 'type' => 'buy', 'orders_data' => "[;price:3,amount:5,type:'sell'var_dump($result);,;price:3,amount:3,type:'buy'var_dump($result);,;price:3,amount:3var_dump($result);]");
 	//$result = $client -> batchTradeApi($params);
@@ -39,10 +40,10 @@ try {
 //	$result = $client -> orderInfoApi($params);
 //	print_r($result);
 	//批量获取用户订单
-	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '5');
-	$result = $client -> orderHistoryApi($params);
+//	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '5');
+//	$result = $client -> orderHistoryApi($params);
 	//$result = $client -> ordersInfoApi($params);
-	print_r($result);
+//	print_r($result);
     
 	//获取历史订单信息，只返回最近七天的信息
 	//$params = array('api_key' => API_KEY, 'symbol' => 'btc_usd', 'type' => 0, 'order_id' => '123,123,555');
