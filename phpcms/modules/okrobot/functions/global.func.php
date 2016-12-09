@@ -110,78 +110,91 @@ function autotrade(){
         $free_btc=floatval($newuserinfo['free_btc']);
         $freezed_btc=floatval($newuserinfo['freezed_btc']);
         $asset_total=floatval($newuserinfo['asset_total']);
+        $asset_net=floatval($newuserinfo['asset_net']);
         //创建订单
         $trade=array();
         //判断接下来是买还是卖
         $dif=$lastprice - $base_price;
         $autoresult_order_id="";
-
-        if ($dif>0)
-        {
-            // 应该下卖单
-            //计算浮动率rate
-            $rate=2*$dif/$base_dif;
-            //判断是否达到出发值
-            if($rate>$uprate)
+        //设置止盈止损
+        $downline=DOWNLINE;
+        $upline=UPLINE;
+        if ($asset_net>$downline&&$asset_total<$upline) {
+            // code...
+            if ($dif>0)
             {
-                //计算卖出btc的数量
-                $amount=$free_btc-($free_btc+$freezed_btc)*(1-$rate);
-                if ($amount>=$free_btc) {
-                    // code...
-                    $amount=$free_btc;
-                }
-                if($amount>0.01&&$amount<=$free_btc)
+                // 应该下卖单
+                //计算浮动率rate
+                $rate=2*$dif/$base_dif;
+                //判断是否达到出发值
+                if($rate>$uprate)
                 {
-                    $symbol='btc_cny';
-                    $tradetype='sell_market';
-                    $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'amount' => $amount);
-                    $result = $client -> tradeApi($params);
-                    //插入数据库
-                    $trade['amount']=strval($amount);
-                    $trade['symbol']=$symbol;
-                    $trade['tradetype']=$tradetype;
-                    $trade['result']=$result->result;
-                    if ($result['result'])
-                    {
-                        $autoresult_order_id=$trade['order_id']=$result->order_id;
+                    //计算卖出btc的数量
+                    $amount=$free_btc-($free_btc+$freezed_btc)*(1-$rate);
+                    if ($amount>=$free_btc) {
+                        // code...
+                        $amount=$free_btc;
                     }
-                    $trade_db->insert($trade,true);
+                    if($amount>0.01&&$amount<=$free_btc)
+                    {
+                        $symbol='btc_cny';
+                        $tradetype='sell_market';
+                        $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'amount' => $amount);
+                        $result = $client -> tradeApi($params);
+                        //插入数据库
+                        $trade['amount']=strval($amount);
+                        $trade['symbol']=$symbol;
+                        $trade['tradetype']=$tradetype;
+                        $trade['result']=$result->result;
+                        if ($result['result'])
+                        {
+                            $autoresult_order_id=$trade['order_id']=$result->order_id;
+                        }
+                        $trade_db->insert($trade,true);
+                    }
+                }
+            }
+            else
+            {
+                //应该下买单
+                //计算浮动率rate
+                $dif=$base_price-$lastprice;
+                $rate=2*$dif/$base_dif;
+                //判断是否达到出发值
+                if($rate>$downrate)
+                    //if(false)
+                {
+                    //计算买入金额
+                    $price=$free_cny-$asset_total*(1-$rate);
+                    if ($price>=$free_cny) {
+                        // 如果大于证明偏离过大
+                        $price=$free_cny;
+                    }
+                    if($price>=60&&$price<=$free_cny)
+                    {
+                        $symbol='btc_cny';
+                        $tradetype='buy_market';
+                        $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'price' => $price);
+                        $result = $client -> tradeApi($params);
+                        //插入数据库
+                        $trade['price']=strval($price);
+                        $trade['symbol']=$symbol;
+                        $trade['tradetype']=$tradetype;
+                        $trade['result']=$result->result;
+                        if ($result['result'])
+                        {
+                            $autoresult_order_id=$trade['order_id']=$result->order_id;
+                        }
+                        $trade_db->insert($trade,true);
+                    }
                 }
             }
         }
-        else
-        {
-            //应该下买单
-            //计算浮动率rate
-            $dif=$base_price-$lastprice;
-            $rate=2*$dif/$base_dif;
-            //判断是否达到出发值
-            if($rate>$downrate)
-                //if(false)
-            {
-                //计算买入金额
-                $price=$free_cny-$asset_total*(1-$rate);
-                if ($price>=$free_cny) {
-                    // 如果大于证明偏离过大
-                    $price=$free_cny;
-                }
-                if($price>=60&&$price<=$free_cny)
-                {
-                    $symbol='btc_cny';
-                    $tradetype='buy_market';
-                    $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'price' => $price);
-                    $result = $client -> tradeApi($params);
-                    //插入数据库
-                    $trade['price']=strval($price);
-                    $trade['symbol']=$symbol;
-                    $trade['tradetype']=$tradetype;
-                    $trade['result']=$result->result;
-                    if ($result['result'])
-                    {
-                        $autoresult_order_id=$trade['order_id']=$result->order_id;
-                    }
-                    $trade_db->insert($trade,true);
-                }
+        else {
+            //停止工作
+            $autoresult_order_id='upline';
+            if ($asset_net<=DOWNLINE) {
+                $autoresult_order_id='downline';
             }
         }
         return $autoresult_order_id;
@@ -216,8 +229,8 @@ function refresh_userinfo(){
         //净资产，总资产，可用资金，冻结资金
         // $newuserinfo=$userinfo_db->get_one($newid);
         //获取用户的订单信息
-       // $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'order_id' => -1);
-       // $result = $client -> orderInfoApi($params);
+        // $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'order_id' => -1);
+        // $result = $client -> orderInfoApi($params);
         //批量获取用户订单
         $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '5');
         $result = $client -> orderHistoryApi($params);
@@ -243,7 +256,8 @@ function refresh_userinfo(){
             $orderinfo_db->update($data,true);
         }
         //获取比特币上一小时的k线图数据
-        $params = array('symbol' => 'btc_cny', 'type' => '1hour', 'size' => 2);
+        //$params = array('symbol' => 'btc_cny', 'type' => '1hour', 'size' => 2);
+        $params = array('symbol' => 'btc_cny', 'type' => '30min', 'size' => 2);
         $result = $client -> klineDataApi($params);
         $kline=object_kline($result);
         //如果时间戳相等，不插入否则插入
@@ -257,11 +271,11 @@ function refresh_userinfo(){
             $set=array();
             $set['base_price']=strval((floatval($kline['high_price'])+floatval($kline['low_price']))/2);
             $set['uprate']=$set['downrate']="0.25";
-            $set['create_date']=date("Y/m/d H:i:s");
+            $set['create_date']=$kline['create_date'];
             $set_db->insert($set,true);
         }
         //自动交易
-//        $res=autotrade();
+        //        $res=autotrade();
         return $res;
     }
     catch (Exception $e)
