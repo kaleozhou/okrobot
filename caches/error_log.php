@@ -1605,3 +1605,51 @@
 <?php exit;?>12-08 16:47:05 | 2 | explode() expects parameter 2 to be string, array given | phpcms/libs/classes/db_mysqli.class.php | 135
 <?php exit;?>12-08 16:47:05 | 2 | array_walk() expects parameter 1 to be array, null given | phpcms/libs/classes/db_mysqli.class.php | 136
 <?php exit;?>12-08 16:47:05 | 2 | implode(): Invalid arguments passed | phpcms/libs/classes/db_mysqli.class.php | 137
+<?php exit;?>12-09 18:28:31 | 2 | unlink(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): Permission denied | phpcms/libs/functions/dir.func.php | 152
+<?php exit;?>12-09 18:28:31 | 2 | rmdir(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/): Permission denied | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>12-09 18:28:31 | 2 | file_put_contents(/home/kaleo/www/okrobot/phpcms/templates/default/config.php): failed to open stream: Permission denied | phpcms/modules/admin/classes/module_api.class.php | 197
+<?php exit;?>12-09 18:28:33 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:28:33 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:28:33 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:28:33 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:28:33 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:28:33 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:28:33 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:28:33 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:28:34 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:28:34 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:28:34 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:28:34 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:42:40 | 2 | unlink(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): Permission denied | phpcms/libs/functions/dir.func.php | 152
+<?php exit;?>12-09 18:42:40 | 2 | rmdir(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/): Permission denied | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>12-09 18:42:40 | 2 | file_put_contents(/home/kaleo/www/okrobot/phpcms/templates/default/config.php): failed to open stream: Permission denied | phpcms/modules/admin/classes/module_api.class.php | 197
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:42:42 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:42:47 | 2 | copy(/home/kaleo/www/okrobot/phpcms/templates/default/okrobot/index.html): failed to open stream: Permission denied | phpcms/libs/functions/dir.func.php | 54
+<?php exit;?>12-09 18:42:47 | 2 | chmod(): Operation not permitted | phpcms/libs/functions/dir.func.php | 55
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:42:52 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>12-09 18:45:59 | 2 | Division by zero               | phpcms/modules/okrobot/functions/global.func.php | 41
+<?php exit;?>12-09 19:00:49 | 4096 | Object of class mysqli_result could not be converted to string | phpcms/libs/classes/db_mysqli.class.php | 460
+<?php exit;?>12-09 19:00:56 | 4096 | Object of class mysqli_result could not be converted to string | phpcms/libs/classes/db_mysqli.class.php | 460
+<?php exit;?>12-09 19:01:02 | 4096 | Object of class mysqli_result could not be converted to string | phpcms/libs/classes/db_mysqli.class.php | 460

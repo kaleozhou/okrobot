@@ -35,9 +35,9 @@ function object_ticker($result){
     //计算偏移率
     $newkline=$kline_db->get_one('','*','id desc');
     $newset=$set_db->get_one('','*','id desc');
-    $last_price=floatval($ticker['lastprice']);
-    $base_price=floatval($newset['base_price']);
-    $base_dif=floatval($newkline['dif_price']);
+    $last_price=$ticker['lastprice'];
+    $base_price=$newset['base_price'];
+    $base_dif=$newkline['dif_price'];
     $base_rate=($last_price-$base_price)/$base_dif;
     $ticker['base_rate']=strval($base_rate);
     $ticker['tickerdate']=date("Y/m/d H:i:s");
@@ -68,18 +68,22 @@ function object_orderinfo($result){
 }
 //将数据转换成kline数据
 function object_kline($result){
+    $klines=array();
     $kline=array();
-    if(!empty($result[0][1]))
-    {
-        $kline['create_date']=date("Y/m/d H:i:s",substr($result[0][0],0,strlen($result[0][0])-3));  
-        $kline['start_price']=$result[0][1];
-        $kline['high_price']=$result[0][2];
-        $kline['low_price']=$result[0][3];
-        $kline['over_price']=$result[0][4];
-        $kline['vol']=$result[0][5];
-        $kline['dif_price']=floatval($kline['high_price'])-floatval($kline['low_price']);
+    $i=0;
+    foreach ($result as $reskline) {
+        //取出每个kline
+        $kline['create_date']=date("Y/m/d H:i:s",substr($reskline[0],0,strlen($reskline[0])-3));  
+        $kline['start_price']=$reskline[1];
+        $kline['high_price']=$reskline[2];
+        $kline['low_price']=$reskline[3];
+        $kline['over_price']=$reskline[4];
+        $kline['vol']=$reskline[5];
+        $kline['dif_price']=$kline['high_price']-$kline['low_price'];
+        $klines[$i]=$kline;
+        $i++;
     }
-    return $kline;
+    return $klines;
 }
 //下单函数
 function autotrade(){
@@ -95,22 +99,22 @@ function autotrade(){
         $client = new OKCoin(new OKCoin_ApiKeyAuthentication(API_KEY, SECRET_KEY));
         //获取当前行情和基最新成交价价
         $newticker=$ticker_db->get_one('','*','id desc');
-        $lastprice=floatval($newticker['lastprice']);
+        $lastprice=$newticker['lastprice'];
         //获取kline前一小时的记录
         $newkline=$kline_db->get_one('','*','id desc');
-        $base_dif=floatval($newkline['dif_price']);
+        $base_dif=$newkline['dif_price'];
         //获取设置
         $newset=$set_db->get_one('','*','id desc');
-        $base_price=floatval($newset['base_price']);
-        $uprate=floatval($newset['uprate']);
-        $downrate=floatval($newset['downrate']);
+        $base_price=$newset['base_price'];
+        $uprate=$newset['uprate'];
+        $downrate=$newset['downrate'];
         //获取当前用户信息
         $newuserinfo=$userinfo_db->get_one('','*','id desc');
-        $free_cny=floatval($newuserinfo['free_cny']);
-        $free_btc=floatval($newuserinfo['free_btc']);
-        $freezed_btc=floatval($newuserinfo['freezed_btc']);
-        $asset_total=floatval($newuserinfo['asset_total']);
-        $asset_net=floatval($newuserinfo['asset_net']);
+        $free_cny=$newuserinfo['free_cny'];
+        $free_btc=$newuserinfo['free_btc'];
+        $freezed_btc=$newuserinfo['freezed_btc'];
+        $asset_total=$newuserinfo['asset_total'];
+        $asset_net=$newuserinfo['asset_net'];
         //创建订单
         $trade=array();
         //判断接下来是买还是卖
@@ -119,8 +123,8 @@ function autotrade(){
         //设置止盈止损
         $downline=DOWNLINE;
         $upline=UPLINE;
-        //if (false)
-        if ($asset_net>$downline&&$asset_net<$upline)
+        if (false)
+        //if ($asset_net>$downline&&$asset_net<$upline)
         {
             // code...
             if ($dif>0)
@@ -142,7 +146,7 @@ function autotrade(){
                         $symbol='btc_cny';
                         $tradetype='sell_market';
                         $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'amount' => $amount);
-                        $result = $client->tradeApi($params);
+              //          $result = $client->tradeApi($params);
                         //插入数据库
                         $trade['amount']=strval($amount);
                         $trade['symbol']=$symbol;
@@ -177,7 +181,7 @@ function autotrade(){
                         $symbol='btc_cny';
                         $tradetype='buy_market';
                         $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'price' => $price);
-                        $result = $client -> tradeApi($params);
+                //        $result = $client -> tradeApi($params);
                         //插入数据库
                         $trade['price']=strval($price);
                         $trade['symbol']=$symbol;
@@ -254,28 +258,39 @@ function refresh_userinfo(){
             $data=array('status'=>'-1');
             $orderinfo_db->update($data,true);
         }
-        //获取比特币上一小时的k线图数据
-        //$params = array('symbol' => 'btc_cny', 'type' => '1hour', 'size' => 2);
-        $params = array('symbol' => 'btc_cny', 'type' => '30min', 'size' => 2);
+        //获取比特币5分钟k线图数据20条
+        $params = array('symbol' => 'btc_cny', 'type' => '5min', 'size' => 20);
         $result = $client -> klineDataApi($params);
-        $kline=object_kline($result);
-        //如果时间戳相等，不插入否则插入
-        $where=array('create_date'=>$kline['create_date']);
-        $rs=$kline_db->select($where);
-        if(empty($rs))
-        {
-            //插入数据库
-            $res=$kline_db->insert($kline,true);
-            //计算除平均值添加近基准价格中
-            $set=array();
-            $set['base_price']=strval((floatval($kline['high_price'])+floatval($kline['low_price']))/2);
-            $set['uprate']=UPRATE;
-            $set['downrate']=DOWNRATE;
-            $set['create_date']=$kline['create_date'];
-            $set_db->insert($set,true);
+        $klines=object_kline($result);
+        if (count($klines)>0) {
+            foreach ($klines as $key) {
+                //如果时间戳相等，不插入否则插入
+                $where=array('create_date'=>$key['create_date']);
+                $rs=$kline_db->select($where);
+                if(empty($rs))
+                {
+                    //插入数据库
+                    $res=$kline_db->insert($key,true);
+                    //计算除平均值添加近基准价格中
+                }
+            }
         }
-        //自动交易
-        //        $res=autotrade();
+        //更新上次设置set，上次成交价my_last_price，成交单位unit，价值波动n_price
+        $set=array();
+        //获取上次成交金额
+        $where=array('status'=>'2');
+        $lastorder=$orderinfo_db->get_one($where,'*','id desc');
+        $set['my_last_price']=$lastorder['avg_price'];
+        //根据kline计算价值波数值20条信息
+        //$n_price=$kline_db->query("select avg(dif_price)from v9_okrobot_kline order by id desc limit 0,20");
+        $avgarray=$kline_db->select('','AVG(dif_price)','0,20','id desc');
+        $n_price=$avgarray[0]['AVG(dif_price)'];
+        $set['n_price']=$n_price;
+        $set['uprate']=UPRATE;
+        $set['unit']=UNIT;
+        $set['downrate']=DOWNRATE;
+        $set['create_date']=$key['create_date'];
+        $set_db->insert($set,true);
         return $res;
     }
     catch (Exception $e)

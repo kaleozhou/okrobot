@@ -40,10 +40,10 @@ try {
 //	$result = $client -> orderInfoApi($params);
 //	print_r($result);
 	//批量获取用户订单
-//	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '5');
-//	$result = $client -> orderHistoryApi($params);
-	//$result = $client -> ordersInfoApi($params);
-//	print_r($result);
+	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '5');
+	$result = $client -> orderHistoryApi($params);
+  //$result = $client -> ordersInfoApi($params);
+	var_dump($result);
     
 	//获取历史订单信息，只返回最近七天的信息
 	//$params = array('api_key' => API_KEY, 'symbol' => 'btc_usd', 'type' => 0, 'order_id' => '123,123,555');
