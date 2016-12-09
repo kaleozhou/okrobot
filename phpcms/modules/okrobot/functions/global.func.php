@@ -119,7 +119,7 @@ function autotrade(){
         //设置止盈止损
         $downline=DOWNLINE;
         $upline=UPLINE;
-        if ($asset_net>$downline&&$asset_total<$upline) {
+        if ($asset_net>$downline&&$asset_net<$upline) {
             // code...
             if ($dif>0)
             {
