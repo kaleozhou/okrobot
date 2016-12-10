@@ -148,10 +148,10 @@ function autotrade(){
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
                         $trade['result']=strval($result->result);
-                        if ($result['result']=='true')
-                        {
-                            $autoresult_order_id=$trade['order_id']=$result->order_id;
-                        }
+                       // if ($result['result']=='true')
+                       // {
+                       //     $autoresult_order_id=$trade['order_id']=$result->order_id;
+                       // }
                         $trade_db->insert($trade,true);
                     }
                     else
@@ -165,11 +165,11 @@ function autotrade(){
                         $trade['price']=$price;
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
-                        $trade['result']=strval($result->result);
-                        if ($result['result']=='true')
-                        {
-                            $autoresult_order_id=$trade['order_id']=$result->order_id;
-                        }
+                       // $trade['result']=strval($result->result);
+                       // if ($result['result']=='true')
+                       // {
+                       //     $autoresult_order_id=$trade['order_id']=$result->order_id;
+                       // }
                         $trade_db->insert($trade,true);
 
                     }
@@ -197,11 +197,11 @@ function autotrade(){
                         $trade['price']=$price;
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
-                        $trade['result']=strval($result->result);
-                        if ($result['result']=='true')
-                        {
-                            $autoresult_order_id=$trade['order_id']=$result->order_id;
-                        }
+                       // $trade['result']=strval($result->result);
+                       // if ($result['result']=='true')
+                       // {
+                       //     $autoresult_order_id=$trade['order_id']=$result->order_id;
+                       // }
                         $trade_db->insert($trade,true);
                     }
                 }
