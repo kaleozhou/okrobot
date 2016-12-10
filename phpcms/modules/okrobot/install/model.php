@@ -8,5 +8,5 @@
  */
 defined('IN_PHPCMS') or exit('Access Denied');
 defined('INSTALL') or exit('Access Denied');
-return array('okrobot_ticker','okrobot_userinfo','okrobot_orderinfo','okrobot_trade','okrobot_set','okrobot_kline');
+return array('okrobot_ticker','okrobot_userinfo','okrobot_orderinfo','okrobot_trade','okrobot_set','okrobot_kline','okrobot_trend');
 //return array('okrobot_ticker');
