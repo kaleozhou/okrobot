@@ -151,10 +151,6 @@ function autotrade(){
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
                         $trade['result']=strval($result->result);
-                       // if ($result['result']=='1')
-                       // {
-                       //     $trade['order_id']=$result->order_id;
-                       // }
                         $trade_db->insert($trade,true);
                     }
                     else
@@ -194,6 +190,21 @@ function autotrade(){
                         $result = $client -> tradeApi($params);
                         //插入数据库
                         $trade['price']=$price;
+                        $trade['symbol']=$symbol;
+                        $trade['tradetype']=$tradetype;
+                        $trade['result']=strval($result->result);
+                        $trade_db->insert($trade,true);
+                    }
+                    else if($price<60)
+                    {
+                        //卖出0.01btc比更新价格
+                        $amount=0.01;
+                        $symbol='btc_cny';
+                        $tradetype='sell_market';
+                        $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'amount' => $amount);
+                        $result = $client->tradeApi($params);
+                        //插入数据库
+                        $trade['amount']=$amount;
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
                         $trade['result']=strval($result->result);
