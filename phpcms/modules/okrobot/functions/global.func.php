@@ -38,7 +38,10 @@ function object_ticker($result){
     $last_price=$ticker['last_price'];
     $my_last_price=$newset['my_last_price'];
     $n_price=$newset['n_price'];
+    if($my_last_price!=0){
+
     $base_rate=($last_price-$my_last_price)/$my_last_price;
+    }
     $ticker['base_rate']=$base_rate;
     $ticker['tickerdate']=date("Y/m/d H:i:s");
     return $ticker;
@@ -147,11 +150,11 @@ function autotrade(){
                         $trade['amount']=$amount;
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
-                        $trade['result']=$result->result;
-                        if ($result['result'])
-                        {
-                            $trade['order_id']=$result->order_id;
-                        }
+                        $trade['result']=strval($result->result);
+                   //     if ($result['result']=='1')
+                   //     {
+                   //        // $trade['order_id']=$result->order_id;
+                   //     }
                         $trade_db->insert($trade,true);
                     }
                     else
@@ -165,11 +168,7 @@ function autotrade(){
                         $trade['price']=$price;
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
-                        $trade['result']=$result->result;
-                        if ($result['result'])
-                        {
-                            $trade['order_id']=$result->order_id;
-                        }
+                        $trade['result']=strval($result->result);
                         $trade_db->insert($trade,true);
 
                     }
@@ -197,11 +196,7 @@ function autotrade(){
                         $trade['price']=$price;
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
-                        $trade['result']=$result->result;
-                        if ($result['result'])
-                        {
-                            $trade['order_id']=$result->order_id;
-                        }
+                        $trade['result']=strval($result->result);
                         $trade_db->insert($trade,true);
                     }
                 }
@@ -270,7 +265,8 @@ function refresh_userinfo(){
             $orderinfo_db->update($data,true);
         }
         //获取比特币5分钟k线图数据20条
-        $params = array('symbol' => 'btc_cny', 'type' => KLINETYPE, 'size' => 20);
+        $type=KLINETYPE;
+        $params = array('symbol' => 'btc_cny', 'type' =>$type, 'size' => 20);
         $result = $client -> klineDataApi($params);
         $klines=object_kline($result);
         if (count($klines)>0) {
