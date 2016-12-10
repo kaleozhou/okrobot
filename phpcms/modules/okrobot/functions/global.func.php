@@ -151,10 +151,10 @@ function autotrade(){
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
                         $trade['result']=strval($result->result);
-                   //     if ($result['result']=='1')
-                   //     {
-                   //        // $trade['order_id']=$result->order_id;
-                   //     }
+                        if ($result['result']=='1')
+                        {
+                            $trade['order_id']=$result->order_id;
+                        }
                         $trade_db->insert($trade,true);
                     }
                     else
@@ -169,6 +169,10 @@ function autotrade(){
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
                         $trade['result']=strval($result->result);
+                        if ($result['result']=='1')
+                        {
+                            $trade['order_id']=$result->order_id;
+                        }
                         $trade_db->insert($trade,true);
 
                     }
@@ -197,6 +201,10 @@ function autotrade(){
                         $trade['symbol']=$symbol;
                         $trade['tradetype']=$tradetype;
                         $trade['result']=strval($result->result);
+                        if ($result['result']=='1')
+                        {
+                            $trade['order_id']=$result->order_id;
+                        }
                         $trade_db->insert($trade,true);
                     }
                 }
