@@ -270,7 +270,7 @@ function refresh_userinfo(){
             $orderinfo_db->update($data,true);
         }
         //获取比特币5分钟k线图数据20条
-        $params = array('symbol' => 'btc_cny', 'type' => '5min', 'size' => 20);
+        $params = array('symbol' => 'btc_cny', 'type' => KLINETYPE, 'size' => 20);
         $result = $client -> klineDataApi($params);
         $klines=object_kline($result);
         if (count($klines)>0) {
