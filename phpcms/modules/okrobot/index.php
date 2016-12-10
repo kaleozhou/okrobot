@@ -8,7 +8,8 @@ const UPLINE=10000;//止盈值
 const UPRATE=0.35;//
 const DOWNRATE=0.25;
 const UNIT=0.1;
-const KLINETYPE="5min";
+const UNITRATE=0.3;
+const KLINETYPE="15min";
 class index {
     private $userinfo_db;
     function __construct() {

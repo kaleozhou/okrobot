@@ -136,7 +136,7 @@ function autotrade(){
                 //判断是否达到触发值
                 //如果当前价格$last_price低于$my_last_price价值波动一个$n_price,
 
-                if(abs($dif)>=$n_price)
+                if(abs($dif)>=UNITRATE*$n_price)
                 {
                     //计算卖出btc的数量
                     $amount=$free_btc;
@@ -178,7 +178,7 @@ function autotrade(){
             {
                 //价格在上升，辖买单
                 //判断是否达到出发值
-                if(abs($dif)>=0.3*$n_price)
+                if(abs($dif)>=UNITRATE*$n_price)
                 {
                     //计算买入金额
                     $price=$asset_total*$unit;
