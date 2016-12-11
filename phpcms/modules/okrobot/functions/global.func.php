@@ -144,7 +144,7 @@ function autotrade(){
                 if(abs($dif)>=UNITRATE*$n_price)
                 {
                     //计算卖出btc的数量
-                    $amount=UNIT*$free_btc;
+                    $amount=(UNIT*$asset_total)/$last_price;
                     //判断是否是连击,如果是则
                     if ($last_trade_type=='up_1') {
                         if ($last_trade_hits>1) {
@@ -178,9 +178,6 @@ function autotrade(){
                         //判断是否是连击
                         $price=60;
                         if ($last_trade_type=='up_2') {
-                            if ($last_trade_hits>1) {
-                                $price=$free_cny;
-                            }
                             $trend['last_trade_hits']=$last_trade_hits+1;
                         }
                         $symbol='btc_cny';
@@ -208,11 +205,11 @@ function autotrade(){
                 if(abs($dif)>=UNITRATE*$n_price)
                 {
                     //计算买入金额
-                    $price=UNIT*$free_cny;
+                    $price=UNIT*$asset_total;
                     //判断是否是连击,如果是则
                     if ($last_trade_type=='down_1') {
-                        if ($last_trade_hits>1) {
-                            $price=UNIT*$free_cny*$last_trade_hits;   
+                        if ($last_trade_hits>=2) {
+                            $price=60;   
                         }
                         $trend['last_trade_hits']=$last_trade_hits+1;
                     }
@@ -242,10 +239,9 @@ function autotrade(){
                     {
                         //卖出0.01btc比更新价格
                         $amount=0.01;
-                        //判断是否是3连击,如果是则
                         if ($last_trade_type=='down_2') {
                             if ($last_trade_hits>1) {
-                                $amount=$free_btc;   
+                                $amount=0.01;   
                             }
                             $trend['last_trade_hits']=$last_trade_hits+1;
                         }
