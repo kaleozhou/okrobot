@@ -3,7 +3,7 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 require_once (dirname(__FILE__) . '/OKCoin/OKCoin.php');
 const API_KEY = "7573fd61-7b8a-4132-814b-9536325c8460";
 const SECRET_KEY = "461D47D0FE52B28288E1285D8D899812";
-const DOWNLINE=4900;//初始化止损值
+const DOWNLINE=3900;//初始化止损值
 const UPLINE=10000;//止盈值
 const UPRATE=0.35;//
 const DOWNRATE=0.25;

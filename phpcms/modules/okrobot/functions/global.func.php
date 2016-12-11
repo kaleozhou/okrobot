@@ -271,21 +271,21 @@ function autotrade(){
         else
         {
             //卖出所有的币止损
-            $price=$free_cny;
-            if($price>=60&&$price<=$free_cny)
+            $amount=$free_btc;
+            if($amount>0.01)
             {
                 $symbol='btc_cny';
-                $tradetype='buy_market';
-                $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'price' => $price);
-                $result = $client -> tradeApi($params);
+                $tradetype='sell_market';
+                $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'amount' => $amount);
+                $result = $client->tradeApi($params);
                 //插入数据库
-                $trade['price']=$price;
+                $trade['amount']=$amount;
                 $trade['symbol']=$symbol;
                 $trade['tradetype']=$tradetype;
                 $trade['result']=strval($result->result);
                 $trade_db->insert($trade,true);
                 //插入trend的
-                $trend['last_trade_type']='down_1';
+                $trend['last_trade_type']='up_1';
                 $trend['last_trade_hits']=1;
                 $trend['create_date'] =date("Y/m/d H:i:s");
                 $trend_db->insert($trend,true); 
