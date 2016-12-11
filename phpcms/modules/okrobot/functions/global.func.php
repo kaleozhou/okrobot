@@ -145,13 +145,7 @@ function autotrade(){
                 {
                     //计算卖出btc的数量
                     $amount=(UNIT*$asset_total)/$last_price;
-                    //判断是否是连击,如果是则
-                    if ($last_trade_type=='up_1') {
-                        if ($last_trade_hits>1) {
-                            $amount=UNIT*$free_btc*$last_trade_hits;   
-                        }
                         $trend['last_trade_hits']=$last_trade_hits+1;
-                    }
                     if ($amount>$free_btc) {
                         $amount=$free_btc;
                     }
