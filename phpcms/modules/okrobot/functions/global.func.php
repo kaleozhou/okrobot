@@ -315,9 +315,6 @@ function refresh_userinfo(){
         $result = $client -> tickerApi($params);
         $ticker=object_ticker($result);
         $res=$ticker_db->insert($ticker,true);
-        //获取用户的订单信息
-        // $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'order_id' => -1);
-        // $result = $client -> orderInfoApi($params);
         //批量获取用户订单
         $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '15');
         $result = $client -> orderHistoryApi($params);
@@ -366,7 +363,6 @@ function refresh_userinfo(){
         $lastorder=$orderinfo_db->get_one($where,'*','create_date desc');
         $set['my_last_price']=$lastorder['avg_price'];
         //根据kline计算价值波数值20条信息
-        //$n_price=$kline_db->query("select avg(dif_price)from v9_okrobot_kline order by id desc limit 0,20");
         $avgarray=$kline_db->select('','AVG(dif_price)','0,20','id desc');
         $n_price=$avgarray[0]['AVG(dif_price)'];
         $set['n_price']=$n_price;
@@ -375,6 +371,7 @@ function refresh_userinfo(){
         $set['downrate']=DOWNRATE;
         $set['create_date']=$key['create_date'];
         $set_db->insert($set,true);
+        
         return $res;
     }
     catch (Exception $e)
