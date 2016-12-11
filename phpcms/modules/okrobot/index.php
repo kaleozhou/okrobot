@@ -7,7 +7,7 @@ const DOWNLINE=4100;//初始化止损值
 const UPLINE=10000;//止盈值
 const UPRATE=0.35;//
 const DOWNRATE=0.25;
-const UNIT=0.3;//下单单位
+const UNIT=0.5;//下单单位
 const UNITRATE=0.3;//买入，卖出对价值波动的比率
 const KLINETYPE="5min";
 class index {
