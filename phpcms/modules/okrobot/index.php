@@ -3,13 +3,13 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 require_once (dirname(__FILE__) . '/OKCoin/OKCoin.php');
 const API_KEY = "7573fd61-7b8a-4132-814b-9536325c8460";
 const SECRET_KEY = "461D47D0FE52B28288E1285D8D899812";
-const DOWNLINE=3900;//初始化止损值
+const DOWNLINE=3800;//初始化止损值
 const UPLINE=10000;//止盈值
 const UPRATE=0.35;//
 const DOWNRATE=0.25;
-const UNIT=0.5;//下单单位
+const UNIT=0.25;//下单单位
 const UNITRATE=0.3;//买入，卖出对价值波动的比率
-const KLINETYPE="5min";
+const KLINETYPE="15min";
 class index {
     private $userinfo_db;
     function __construct() {
