@@ -39,7 +39,6 @@ function object_ticker($result){
     $my_last_price=$newset['my_last_price'];
     $n_price=$newset['n_price'];
     if($my_last_price!=0){
-
         $base_rate=($last_price-$my_last_price)/$my_last_price;
     }
     $ticker['base_rate']=$base_rate;
@@ -142,18 +141,17 @@ function autotrade(){
                 //应该价格在上升，下卖单
                 //判断是否达到触发值
                 //如果当前价格$last_price低于$my_last_price价值波动一个$n_price,
-
                 if(abs($dif)>=UNITRATE*$n_price)
                 {
                     //计算卖出btc的数量
                     $amount=UNIT*$free_btc;
-                        //判断是否是连击,如果是则
-                        if ($last_trade_type=='up_1') {
-                            if ($last_trade_hits>1) {
+                    //判断是否是连击,如果是则
+                    if ($last_trade_type=='up_1') {
+                        if ($last_trade_hits>1) {
                             $amount=UNIT*$free_btc*$last_trade_hits;   
-                            }
-                        $trend['last_trade_hits']=$last_trade_hits+1;
                         }
+                        $trend['last_trade_hits']=$last_trade_hits+1;
+                    }
                     if ($amount>$free_btc) {
                         $amount=$free_btc;
                     }
@@ -174,7 +172,6 @@ function autotrade(){
                         $trend['last_trade_hits']=1;
                         $trend['create_date'] =date("Y/m/d H:i:s");
                         $trend_db->insert($trend,true); 
-
                     }
                     else
                     {
@@ -182,9 +179,9 @@ function autotrade(){
                         $price=60;
                         if ($last_trade_type=='up_2') {
                             if ($last_trade_hits>1) {
-                        $price=$free_cny;
+                                $price=$free_cny;
                             }
-                        $trend['last_trade_hits']=$last_trade_hits+1;
+                            $trend['last_trade_hits']=$last_trade_hits+1;
                         }
                         $symbol='btc_cny';
                         $tradetype='buy_market';
@@ -201,7 +198,6 @@ function autotrade(){
                         $trend['last_trade_hits']=1;
                         $trend['create_date'] =date("Y/m/d H:i:s");
                         $trend_db->insert($trend,true); 
-
                     }
                 }
             }
@@ -212,14 +208,14 @@ function autotrade(){
                 if(abs($dif)>=UNITRATE*$n_price)
                 {
                     //计算买入金额
-                    $price=UNIT*$asset_total;
-                        //判断是否是连击,如果是则
-                        if ($last_trade_type=='down_1') {
-                            if ($last_trade_hits>1) {
+                    $price=UNIT*$free_cny;
+                    //判断是否是连击,如果是则
+                    if ($last_trade_type=='down_1') {
+                        if ($last_trade_hits>1) {
                             $price=UNIT*$free_cny*$last_trade_hits;   
-                            }
-                        $trend['last_trade_hits']=$last_trade_hits+1;
                         }
+                        $trend['last_trade_hits']=$last_trade_hits+1;
+                    }
                     if ($price>$free_cny) {
                         // 如果大于证明偏离过大
                         $price=$free_cny;
@@ -249,9 +245,9 @@ function autotrade(){
                         //判断是否是3连击,如果是则
                         if ($last_trade_type=='down_2') {
                             if ($last_trade_hits>1) {
-                            $amount=$free_btc;   
+                                $amount=$free_btc;   
                             }
-                        $trend['last_trade_hits']=$last_trade_hits+1;
+                            $trend['last_trade_hits']=$last_trade_hits+1;
                         }
                         $symbol='btc_cny';
                         $tradetype='sell_market';
@@ -272,7 +268,28 @@ function autotrade(){
                 }
             }
         }
-        else {
+        else
+        {
+            //卖出所有的币止损
+            $price=$free_cny;
+            if($price>=60&&$price<=$free_cny)
+            {
+                $symbol='btc_cny';
+                $tradetype='buy_market';
+                $params = array('api_key' => API_KEY, 'symbol' => $symbol, 'type' => $tradetype,  'price' => $price);
+                $result = $client -> tradeApi($params);
+                //插入数据库
+                $trade['price']=$price;
+                $trade['symbol']=$symbol;
+                $trade['tradetype']=$tradetype;
+                $trade['result']=strval($result->result);
+                $trade_db->insert($trade,true);
+                //插入trend的
+                $trend['last_trade_type']='down_1';
+                $trend['last_trade_hits']=1;
+                $trend['create_date'] =date("Y/m/d H:i:s");
+                $trend_db->insert($trend,true); 
+            }
             //停止工作
             $autoresult_order_id='upline';
             if ($asset_net<=DOWNLINE) {
@@ -314,7 +331,6 @@ function refresh_userinfo(){
         //批量获取用户订单
         $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '15');
         $result = $client -> orderHistoryApi($params);
-
         $orders=object_orderinfo($result);
         //将订单插入数据库
         if(count($orders)>0){
