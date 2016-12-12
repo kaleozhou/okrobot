@@ -206,7 +206,6 @@ function object_ticker($result){
     $ticker['sell']=$result->ticker->sell;
     $ticker['vol']=$result->ticker->vol;
     //计算偏移率
-    $newkline=get_new_info('kline');
     $newset=get_new_info('set');
     $last_price=$ticker['last_price'];
     $my_last_price=$newset['my_last_price'];
@@ -331,7 +330,7 @@ function autotrade(){
         //创建订单
         $trade=array();
         //判断接下来是买还是卖
-        $dif=$last_price - $my_last_price;
+        $dif=$newticker['dif_price'];
         $autoresult_order_id="";
         //设置止盈止损
         $downline=DOWNLINE;
