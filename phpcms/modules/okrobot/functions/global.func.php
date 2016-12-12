@@ -87,6 +87,35 @@ function object_kline($result){
     }
     return $klines;
 }
+//发送通知短信
+function send_sms($content){
+    $sms_db=pc_base::load_model('okrobot_sms_model');
+    $newsms=array();
+    $username=SMSUSERNAME;
+    $password=md5(SMSPASSWORD);
+    $phone=SMSPHONE;
+    $sms_type='短信宝';
+    $url="http://api.smsbao.com/sms?u=$username&p=$password&m=$phone&c=$content";
+    //初始化
+    $curl = curl_init();
+    //设置抓取的url
+    curl_setopt($curl, CURLOPT_URL, $url);
+    //设置头文件的信息作为数据流输出
+    curl_setopt($curl, CURLOPT_HEADER,0);
+    //设置获取的信息以文件流的形式返回，而不是直接输出。
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER,1);
+    //执行命令
+    $result = curl_exec($curl);
+    //关闭URL请求
+    curl_close($curl);
+    $newsms['username']=$username;
+    $newsms['password']=$password;
+    $newsms['phone']=$phone;
+    $newsms['content']=$content;
+    $newsms['result']=$result;
+    $newsms['sms_type']=$sms_type;
+    $sms_db->insert($newsms,true);
+}
 //下单函数
 function autotrade(){
     try{
@@ -282,9 +311,13 @@ function autotrade(){
             }
             //停止工作
             $autoresult_order_id='upline';
+            $sms='已经止盈！';
             if ($asset_net<=DOWNLINE) {
                 $autoresult_order_id='downline';
+            $sms='已经止损！';
             }
+            //发送通知
+            send_sms($sms);
         }
         return $autoresult_order_id;
     }catch(Exception $e)
@@ -371,7 +404,6 @@ function refresh_userinfo(){
         $set['downrate']=DOWNRATE;
         $set['create_date']=$key['create_date'];
         $set_db->insert($set,true);
-        
         return $res;
     }
     catch (Exception $e)

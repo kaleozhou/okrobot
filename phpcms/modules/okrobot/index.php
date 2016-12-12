@@ -9,7 +9,10 @@ const UPRATE=0.35;//上浮率
 const DOWNRATE=0.25;//下浮动率
 const UNIT=0.2;//下单单位
 const UNITRATE=0.5;//买入，卖出对价值波动的比率
-const KLINETYPE="15min";
+const KLINETYPE="15min";//kline的周期
+const SMSUSERNAME="kaleozhou";//短信用户名
+const SMSPASSWORD="zh13275747670";//短信密码
+const SMSPHONE="13635456575";//短信手机号
 class index {
     private $userinfo_db;
     function __construct() {
