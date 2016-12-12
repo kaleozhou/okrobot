@@ -150,7 +150,7 @@ function api_to_database($tablename){
         $set['uprate']=UPRATE;
         $set['unit']=UNIT;
         $set['downrate']=DOWNRATE;
-        $set['create_date']=$key['create_date'];
+        $set['create_date']=date('Y/m/d H:i:s');
         $set_db->insert($set,true);
         break;
     case 'borrow':
