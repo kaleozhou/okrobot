@@ -143,7 +143,7 @@ function get_new_info($tablename){
         return $res;
         break;
     case 'ticker':
-        $res=$newticker=$ticker_db->get_one('','*','id desc');
+        $res=$newticker=$ticker_db->get_one('','*','create_date desc');
         return $res;
         break;
     case 'orderinfo':
