@@ -69,6 +69,7 @@ $LANG['main_license'] = '授权信息';
 $LANG['main_support'] = '技术支持与服务';
 $LANG['main_license_type'] = '授权类型：';
 $LANG['main_serial_number'] = '序列号：';
+$LANG['copyright'] = 'CopyRight 2006-2015 重庆翔庭科技有限公司 KALEOSITE TEAM';
 
 
 //menu.php
@@ -448,8 +449,8 @@ $LANG['input_dirname'] = '请输入目录名称';
 $LANG['enter_the_correct_catname'] = '目录名称必须为字母、数字、下划线、中划线';
 $LANG['catname_have_exists'] = '目录名称已存在';
 $LANG['follow_catname_have_exists'] =  '<br>以下栏目因目录名称已经存在，没有被添加：';
-$LANG['domain_name_format'] = '域名可为空，格式应该为http://www.phpcms.cn/';
-$LANG['domain_end_string'] = '格式应该为http://www.phpcms.cn/，请以‘/’结束';
+$LANG['domain_name_format'] = '域名可为空，格式应该为http://www.xiangtingkeji.com/';
+$LANG['domain_end_string'] = '格式应该为http://www.xiangtingkeji.com/，请以‘/’结束';
 $LANG['template_setting'] = '请在【模板设置】选项中设置模板';
 $LANG['catgory_basic'] = '基本选项';
 $LANG['catgory_createhtml'] = '生成HTML设置';
@@ -522,8 +523,8 @@ $LANG['release_point_configuration'] = '发布点配置';
 $LANG['template_style_configuration'] = '模板风格配置';
 $LANG['style_name'] = '风格名';
 $LANG['site_dirname_err_msg'] = '只能包括数字、字母、下划线三种类型。';
-$LANG['site_domain_ex'] = '请填写域名，格式为：http://www.phpcms.cn/';
-$LANG['site_domain_ex2'] = '格式应该为http://www.phpcms.cn/，请以‘/’结束';
+$LANG['site_domain_ex'] = '请填写域名，格式为：http://www.xiangtingkeji.com/';
+$LANG['site_domain_ex2'] = '格式应该为http://www.xiangtingkeji.com/，请以‘/’结束';
 $LANG['style_name_point'] = '请选择风格（至少选一个）';
 $LANG['select_at_least_1'] = '至少选择1个';
 $LANG['please_select_a_style'] = '请选择模板风格。';
