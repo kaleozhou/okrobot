@@ -117,8 +117,8 @@ function update_data_database(){
     try{
         api_to_database('userinfo');
         api_to_database('orderinfo');
-        api_to_database('kline');
         api_to_database('set');
+        api_to_database('kline');
         api_to_database('ticker');
         api_to_database('borrow');
     }
@@ -143,7 +143,7 @@ function get_new_info($tablename){
         return $res;
         break;
     case 'ticker':
-        $res=$newticker=$ticker_db->get_one('','*','create_date desc');
+        $res=$newticker=$ticker_db->get_one('','*','id desc');
         return $res;
         break;
     case 'orderinfo':
@@ -156,7 +156,7 @@ function get_new_info($tablename){
         return $res;
         break;
     case 'set':
-        $res=$newset=$set_db->get_one('','*','create_date desc');
+        $res=$newset=$set_db->get_one('','*','id desc');
         return $res;
         break;
     case 'trend':
@@ -210,7 +210,6 @@ function object_ticker($result){
     $last_price=$ticker['last_price'];
     $my_last_price=$newset['my_last_price'];
     $dif_price=$last_price-$my_last_price;
-    $n_price=$newset['n_price'];
     $ticker['dif_price']=$dif_price;
     if($my_last_price!=0){
         $base_rate=$dif_price/$my_last_price;
