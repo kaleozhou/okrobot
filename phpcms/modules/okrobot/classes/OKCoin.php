@@ -64,19 +64,19 @@ class OKCoin extends OKCoinBase {
 	}
 	//获取用户借款信息
 	public function borrowsInfoApi($params = null) {
-		return $this -> post("api/v1/borrows_info.do", $params);
+		return $this -> post("/api/v1/borrows_info.do", $params);
 	}
 	//获取申请借款
 	public function borrowMoneyApi($params = null) {
-		return $this -> post("api/v1/borrow_money.do", $params);
+		return $this -> post("/api/v1/borrow_money.do", $params);
 	}
 	//获取借款订单
 	public function borrowOrderInfoApi($params = null) {
-		return $this -> post("api/v1/borrow_order_info.do", $params);
+		return $this -> post("/api/v1/borrow_order_info.do", $params);
 	}
 	//还款
 	public function repaymentApi($params = null) {
-		return $this -> post("api/v1/repayment.do", $params);
+		return $this -> post("/api/v1/repayment.do", $params);
 	}
 
 	//提币BTC/LTC

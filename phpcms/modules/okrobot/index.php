@@ -13,6 +13,7 @@ const KLINETYPE="30min";//kline的周期
 const SMSUSERNAME="kaleozhou";//短信用户名
 const SMSPASSWORD="zh13275747670";//短信密码
 const SMSPHONE="13635456575";//短信手机号
+
 class index {
     private $userinfo_db;
     function __construct() {
@@ -27,7 +28,7 @@ class index {
     }
     public function init() 
     {
-        $refresh=refresh_userinfo();
+        $res=update_data_database();
         $autoresult=autotrade();
         $str="|";
         if ($autoresult!='upline'&&$autoresult!='downline') {

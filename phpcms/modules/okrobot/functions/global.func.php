@@ -1,4 +1,153 @@
 <?php 
+//api数据获取存入数据库
+function api_to_database($tablename){
+    //加载model
+    $userinfo_db=pc_base::load_model('okrobot_userinfo_model');
+    $ticker_db=pc_base::load_model('okrobot_ticker_model');
+    $orderinfo_db=pc_base::load_model('okrobot_orderinfo_model');
+    $trade_db=pc_base::load_model('okrobot_trade_model');
+    $set_db=pc_base::load_model('okrobot_set_model');
+    $trend_db=pc_base::load_model('okrobot_trend_model');
+    $kline_db=pc_base::load_model('okrobot_kline_model');
+    //创建OKCoinapt客户端
+    $client = new OKCoin(new OKCoin_ApiKeyAuthentication(API_KEY, SECRET_KEY));
+    //用户信息
+    switch ($tablename) {
+    case 'userinfo':
+        //获取用户信息
+        $params = array('api_key' => API_KEY);
+        $result = $client -> userinfoApi($params);
+        $userinfo=object_userinfo($result);
+        $userinfo_db->insert($userinfo,true);
+        break;
+    case 'ticker':
+        //获取OKCoin行情（盘口数据）
+        $params = array('symbol' => 'btc_cny');
+        $result = $client -> tickerApi($params);
+        $ticker=object_ticker($result);
+        $res=$ticker_db->insert($ticker,true);
+        break;
+    case 'orderinfo':
+        //批量获取用户订单
+        $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '15');
+        $result = $client -> orderHistoryApi($params);
+        $orders=object_orderinfo($result);
+        //将订单插入数据库
+        if(count($orders)>0){
+            foreach ($orders as $key) {
+                // 验证数据库是否存在存在
+                $where=array('order_id'=>$key['order_id']);
+                $rs=$orderinfo_db->select($where);
+                if (empty($rs)) {
+                    // 如果空插入数据
+                    $orderinfo_db->insert($key,true);
+                }
+                else {
+                    //更新数据
+                    $orderinfo_db->update($key,$where);
+                }
+            }
+        }else {
+            $data=array('status'=>'-1');
+            $orderinfo_db->update($data,true);
+        }
+        //返回上次更新的完全成交的订单信息
+        break;
+    case 'kline':
+        //获取比特币5分钟k线图数据20条
+        $type=KLINETYPE;
+        $params = array('symbol' => 'btc_cny', 'type' =>$type, 'size' => 20);
+        $result = $client -> klineDataApi($params);
+        $klines=object_kline($result);
+        if (count($klines)>0) {
+            foreach ($klines as $key) {
+                //如果时间戳相等，不插入否则插入
+                $where=array('create_date'=>$key['create_date']);
+                $rs=$kline_db->select($where);
+                if(empty($rs))
+                {
+                    //插入数据库
+                    $res=$kline_db->insert($key,true);
+                    //计算除平均值添加近基准价格中
+                }
+            }
+        }
+        break;
+    case 'set':
+        //更新上次设置set，上次成交价my_last_price，成交单位unit，价值波动n_price
+        $set=array();
+        //获取上次成交金额
+        $neworderinfo=get_new_info('orderinfo');
+        $set['my_last_price']=$neworderinfo['avg_price'];
+        //根据kline计算价值波数值20条信息
+        $avgarray=$kline_db->select('','AVG(dif_price)','0,20','id desc');
+        $n_price=$avgarray[0]['AVG(dif_price)'];
+        $set['n_price']=$n_price;
+        $set['uprate']=UPRATE;
+        $set['unit']=UNIT;
+        $set['downrate']=DOWNRATE;
+        $set['create_date']=$key['create_date'];
+        $set_db->insert($set,true);
+        break;
+    default:
+        break;
+    }
+}
+//刷新数据
+function update_data_database(){
+    try{
+        api_to_database('userinfo');
+        api_to_database('ticker');
+        api_to_database('orderinfo');
+        api_to_database('kline');
+        api_to_database('set');
+    }
+    catch(Exception $e)
+    {
+        var_dump($e);
+    }
+}
+//从数据库获取最新信息
+function get_new_info($tablename){
+    //加载model
+    $userinfo_db=pc_base::load_model('okrobot_userinfo_model');
+    $ticker_db=pc_base::load_model('okrobot_ticker_model');
+    $orderinfo_db=pc_base::load_model('okrobot_orderinfo_model');
+    $trade_db=pc_base::load_model('okrobot_trade_model');
+    $set_db=pc_base::load_model('okrobot_set_model');
+    $trend_db=pc_base::load_model('okrobot_trend_model');
+    $kline_db=pc_base::load_model('okrobot_kline_model');
+    switch ($tablename) {
+    case 'userinfo':
+        $res=$newuserinfo=$userinfo_db->get_one('','*','id desc');
+        return $res;
+        break;
+    case 'ticker':
+        $res=$newticker=$ticker_db->get_one('','*','id desc');
+        return $res;
+        break;
+    case 'orderinfo':
+        $where=array('status'=>'2');
+        $res=$neworder=$orderinfo_db->get_one($where,'*','create_date desc');
+        return $res;
+        break;
+    case 'kline':
+        $res=$newkline=$kline_db->get_one('','*','create_date desc');
+        return $res;
+        break;
+    case 'set':
+        $res=$newset=$set_db->get_one('','*','create_date desc');
+        return $res;
+        break;
+    case 'trend':
+        $res=$newtrend=$trend_db->get_one('','*','id desc');
+        return $res;
+        break;
+    default:
+        // code...
+        break;
+    }
+}
 //将获取的数据转换成userinfo数据
 function object_userinfo($result){
     $userinfo=array();
@@ -132,24 +281,24 @@ function autotrade(){
         //创建OKCoinapt客户端
         $client = new OKCoin(new OKCoin_ApiKeyAuthentication(API_KEY, SECRET_KEY));
         //获取当前行情和基最新成交价价
-        $newticker=$ticker_db->get_one('','*','id desc');
+        $newticker=get_new_info('ticker');
         $last_price=$newticker['last_price'];
         //获取kline前一小时的记录
-        $newkline=$kline_db->get_one('','*','id desc');
+        $newkline=get_new_info('kline');
         $base_dif=$newkline['dif_price'];
         //获取趋势
-        $newtrend=$trend_db->get_one('','*','id desc');
+        $newtrend=get_new_info('trend');
         $last_trade_type=$newtrend['last_trade_type'];
         $last_trade_hits=$newtrend['last_trade_hits'];
         //获取设置
-        $newset=$set_db->get_one('','*','id desc');
+        $newset=get_new_info('set');
         $my_last_price=$newset['my_last_price'];
         $unit=$newset['unit'];
         $n_price=$newset['n_price'];
         $uprate=$newset['uprate'];
         $downrate=$newset['downrate'];
         //获取当前用户信息
-        $newuserinfo=$userinfo_db->get_one('','*','id desc');
+        $newuserinfo=get_new_info('userinfo');
         $free_cny=$newuserinfo['free_cny'];
         $free_btc=$newuserinfo['free_btc'];
         $freezed_btc=$newuserinfo['freezed_btc'];
@@ -220,6 +369,7 @@ function autotrade(){
                         $trend['last_trade_hits']=1;
                         $trend['create_date'] =date("Y/m/d H:i:s");
                         $trend_db->insert($trend,true); 
+                        send_sms('卖完了,价格在急速上升！');
                     }
                 }
             }
@@ -285,6 +435,7 @@ function autotrade(){
                         $trend['last_trade_hits']=1;
                         $trend['create_date'] =date("Y/m/d H:i:s");
                         $trend_db->insert($trend,true); 
+                        send_sms('价格在急速下降！');
                     }
                 }
             }
@@ -325,93 +476,6 @@ function autotrade(){
     }catch(Exception $e)
     {
         return $e;
-    }
-}
-//刷新数据
-function refresh_userinfo(){
-    try{
-        //加载model
-        $userinfo_db=pc_base::load_model('okrobot_userinfo_model');
-        $ticker_db=pc_base::load_model('okrobot_ticker_model');
-        $orderinfo_db=pc_base::load_model('okrobot_orderinfo_model');
-        $trade_db=pc_base::load_model('okrobot_trade_model');
-        $set_db=pc_base::load_model('okrobot_set_model');
-        $trend_db=pc_base::load_model('okrobot_trend_model');
-        $kline_db=pc_base::load_model('okrobot_kline_model');
-        //创建OKCoinapt客户端
-        $client = new OKCoin(new OKCoin_ApiKeyAuthentication(API_KEY, SECRET_KEY));
-        //获取用户信息
-        $params = array('api_key' => API_KEY);
-        $result = $client -> userinfoApi($params);
-        $userinfo=object_userinfo($result);
-        $res=$userinfo_db->insert($userinfo,true);
-        //获取OKCoin行情（盘口数据）
-        $params = array('symbol' => 'btc_cny');
-        $result = $client -> tickerApi($params);
-        $ticker=object_ticker($result);
-        $res=$ticker_db->insert($ticker,true);
-        //批量获取用户订单
-        $params = array('api_key' => API_KEY, 'symbol' => 'btc_cny', 'status' => 1, 'current_page' => '1', 'page_length' => '15');
-        $result = $client -> orderHistoryApi($params);
-        $orders=object_orderinfo($result);
-        //将订单插入数据库
-        if(count($orders)>0){
-            foreach ($orders as $key) {
-                // 验证数据库是否存在存在
-                $where=array('order_id'=>$key['order_id']);
-                $rs=$orderinfo_db->select($where);
-                if (empty($rs)) {
-                    // 如果空插入数据
-                    $orderinfo_db->insert($key,true);
-                }
-                else {
-                    //更新数据
-                    $orderinfo_db->update($key,$where);
-                }
-            }
-        }else {
-            $data=array('status'=>'-1');
-            $orderinfo_db->update($data,true);
-        }
-        //获取比特币5分钟k线图数据20条
-        $type=KLINETYPE;
-        $params = array('symbol' => 'btc_cny', 'type' =>$type, 'size' => 20);
-        $result = $client -> klineDataApi($params);
-        $klines=object_kline($result);
-        if (count($klines)>0) {
-            foreach ($klines as $key) {
-                //如果时间戳相等，不插入否则插入
-                $where=array('create_date'=>$key['create_date']);
-                $rs=$kline_db->select($where);
-                if(empty($rs))
-                {
-                    //插入数据库
-                    $res=$kline_db->insert($key,true);
-                    //计算除平均值添加近基准价格中
-                }
-            }
-        }
-        //更新上次设置set，上次成交价my_last_price，成交单位unit，价值波动n_price
-        $set=array();
-        //获取上次成交金额
-        $where=array('status'=>'2');
-        $lastorder=$orderinfo_db->get_one($where,'*','create_date desc');
-        $set['my_last_price']=$lastorder['avg_price'];
-        //根据kline计算价值波数值20条信息
-        $avgarray=$kline_db->select('','AVG(dif_price)','0,20','id desc');
-        $n_price=$avgarray[0]['AVG(dif_price)'];
-        $set['n_price']=$n_price;
-        $set['uprate']=UPRATE;
-        $set['unit']=UNIT;
-        $set['downrate']=DOWNRATE;
-        $set['create_date']=$key['create_date'];
-        $set_db->insert($set,true);
-        return $res;
-    }
-    catch (Exception $e)
-    {
-        printf("更新用户信息超时！");
-        return 1;
     }
 }
 ?>
