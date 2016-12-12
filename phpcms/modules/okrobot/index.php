@@ -46,7 +46,7 @@ class index {
             $newset=$this->set_db->get_one('','*','id desc');
             $str=$str.'上次成交价:'.$newset['my_last_price']."|";
             $str=$str.'波动:'.$newset['n_price']."|";
-            $dif=$newticker['last_price']-$newset['my_last_price'];
+            $dif=$newticker['dif_price'];
             $dif=substr($dif,0,6);
             $str=$str.'差价:'.$dif."|";
             $str=$str."\n";

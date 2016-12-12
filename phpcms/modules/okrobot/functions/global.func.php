@@ -37,9 +37,11 @@ function object_ticker($result){
     $newset=$set_db->get_one('','*','id desc');
     $last_price=$ticker['last_price'];
     $my_last_price=$newset['my_last_price'];
+    $dif_price=$last_price-$my_last_price;
     $n_price=$newset['n_price'];
+    $ticker['dif_price']=$dif_price;
     if($my_last_price!=0){
-        $base_rate=($last_price-$my_last_price)/$my_last_price;
+        $base_rate=$dif_price/$my_last_price;
     }
     $ticker['base_rate']=$base_rate;
     $ticker['tickerdate']=date("Y/m/d H:i:s");
@@ -174,7 +176,7 @@ function autotrade(){
                 {
                     //计算卖出btc的数量
                     $amount=(UNIT*$asset_total)/$last_price;
-                        $trend['last_trade_hits']=$last_trade_hits+1;
+                    $trend['last_trade_hits']=$last_trade_hits+1;
                     if ($amount>$free_btc) {
                         $amount=$free_btc;
                     }
@@ -314,7 +316,7 @@ function autotrade(){
             $sms='已经止盈！';
             if ($asset_net<=DOWNLINE) {
                 $autoresult_order_id='downline';
-            $sms='已经止损！';
+                $sms='已经止损！';
             }
             //发送通知
             send_sms($sms);

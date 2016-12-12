@@ -7,6 +7,7 @@ CREATE TABLE `phpcms_okrobot_ticker` (
     `low` float(10,2) COMMENT '最低价',
     `sell` float(10,2) COMMENT '卖一价',
     `base_rate` float(10,2) COMMENT '基准偏移率',
+    `dif_price` float(10,2) COMMENT '差价',
     `vol` float(10,2) COMMENT '最近24小时成交量' ,
     `tickerdate` varchar(256) COMMENT '服务器返回时间',
     PRIMARY KEY (`id`)
