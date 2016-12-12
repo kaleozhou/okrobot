@@ -9,6 +9,7 @@ function api_to_database($tablename){
     $set_db=pc_base::load_model('okrobot_set_model');
     $trend_db=pc_base::load_model('okrobot_trend_model');
     $kline_db=pc_base::load_model('okrobot_kline_model');
+    $borrow_db=pc_base::load_model('okrobot_borrow_model');
     //创建OKCoinapt客户端
     $client = new OKCoin(new OKCoin_ApiKeyAuthentication(API_KEY, SECRET_KEY));
     //用户信息
@@ -89,6 +90,24 @@ function api_to_database($tablename){
         $set['create_date']=$key['create_date'];
         $set_db->insert($set,true);
         break;
+    case 'borrow':
+	$params = array('api_key' => API_KEY, 'symbol' => 'btc_cny');
+    $result = $client -> borrowsInfoApi($params);
+    $borrow=array();
+    $borrow['borrow_btc']=$result->borrow_btc;
+    $borrow['borrow_cny']=$result->borrow_cny;
+    $borrow['borrow_ltc']=$result->borrow_ltc;
+    $borrow['can_borrow']=$result->can_borrow;
+    $borrow['interest_btc']=$result->interest_btc;
+    $borrow['interest_cny']=$result->interest_cny;
+    $borrow['interest_ltc']=$result->interest_ltc;
+    $borrow['today_interest_btc']=$result->today_interest_btc;
+    $borrow['today_interest_ltc']=$result->today_interest_ltc;
+    $borrow['today_interest_cny']=$result->today_interest_cny;
+    $borrow['result']=$result->result;
+    $borrow['create_date']=date('Y/m/d H:i:s');
+    $borrow_db->insert($borrow,true);	
+            break;
     default:
         break;
     }
@@ -97,10 +116,11 @@ function api_to_database($tablename){
 function update_data_database(){
     try{
         api_to_database('userinfo');
-        api_to_database('ticker');
         api_to_database('orderinfo');
         api_to_database('kline');
         api_to_database('set');
+        api_to_database('ticker');
+        api_to_database('borrow');
     }
     catch(Exception $e)
     {
@@ -143,6 +163,10 @@ function get_new_info($tablename){
         $res=$newtrend=$trend_db->get_one('','*','id desc');
         return $res;
         break;
+    case 'borrow':
+        $res=$newborrow=$borrow_db->get_one('','*','id desc');
+        return $res;
+        break;
     default:
         // code...
         break;
@@ -182,8 +206,8 @@ function object_ticker($result){
     $ticker['sell']=$result->ticker->sell;
     $ticker['vol']=$result->ticker->vol;
     //计算偏移率
-    $newkline=$kline_db->get_one('','*','id desc');
-    $newset=$set_db->get_one('','*','id desc');
+    $newkline=get_new_info('kline');
+    $newset=get_new_info('set');
     $last_price=$ticker['last_price'];
     $my_last_price=$newset['my_last_price'];
     $dif_price=$last_price-$my_last_price;
