@@ -7,9 +7,9 @@ translation save at the array:$LANG
 */
 
 //index
-$LANG['admin_site_title'] = 'phpcmsV9 - Content Management System';
+$LANG['admin_site_title'] = 'kaleosite - Content Management System';
 $LANG['expand_or_contract'] = 'Show or Hide';
-$LANG['phpcms_title'] = 'PHPCMS V9 Content Management System';
+$LANG['phpcms_title'] = 'kaleosite V9 Content Management System';
 $LANG['official_site'] = 'Official site';
 $LANG['authorization'] = 'Authorization';
 $LANG['igenus_for_postfix'] = 'Support Forum';
@@ -43,21 +43,21 @@ $LANG['main_role'] = 'Your Role: ';
 $LANG['main_last_logintime'] = 'Last logged in: ';
 $LANG['main_last_loginip'] = 'Last logged-in IP: ';
 $LANG['main_safety_tips'] = 'Safety Reminder';
-$LANG['main_safety_permissions'] = '* To set PHPCMS directory to 644 permission (Linux or Unix) or Read-Only (NT) is strongly recommended.';
+$LANG['main_safety_permissions'] = '* To set kaleosite directory to 644 permission (Linux or Unix) or Read-Only (NT) is strongly recommended.';
 $LANG['main_safety_debug'] = '* You are adviced to stop debugging (frontend SQL error messages) after your site goes online.';
 $LANG['main_safety_errlog'] = '* We strongly recommend that you keep error logs enabled.';
 $LANG['main_safety_sql'] = '* We strongly recommend that you keep execution_sql disabled.';
 $LANG['main_safety_log'] = '* Your error messages have exceeded the maximum number of allowed logs ({size}). Higher performance of the system is advanced by clearing error logs promotly.';
 $LANG['main_shortcut'] = 'Shortcut';
 $LANG['main_sysinfo'] = 'System Infomation';
-$LANG['main_version'] = 'PHPCMS Version: ';
+$LANG['main_version'] = 'kaleosite Version: ';
 $LANG['main_latest_version'] = 'Get the latest version';
 $LANG['main_os'] = 'Operating System: ';
 $LANG['main_web_server'] = 'Web Server: ';
 $LANG['main_sql_version'] = 'MySQL version: ';
 $LANG['main_upload_limit'] = 'File upload: ';
 $LANG['main_copyright'] = 'Copyright: ';
-$LANG['main_product_team'] = 'PHPCMS developers team';
+$LANG['main_product_team'] = 'kaleosite developers team';
 $LANG['main_product_planning'] = 'Project Manager: ';
 $LANG['main_product_dev'] = 'Development Support Team: ';
 $LANG['main_product_ui'] = 'UI design: ';
@@ -399,7 +399,7 @@ There is a post at SEO chat which lists the number of ways in which the Sitemap 
 
 <B>Internet News Open Protocol: </B> <br>
 Under Baidu`s new standard, which is called Internet News Open Protocol, each website is asked to make their news content XML compliant so that the content can be included into Baidu` search engine index.<br>
-PHPCMS is able to generate sitemaps but you have to submit sitemaps accessing address to google or baidu.<br>
+kaleosite is able to generate sitemaps but you have to submit sitemaps accessing address to google or baidu.<br>
 Your website sitemap accessing address: <?=APP_PATH?>sitemaps.xml<br>
 More info about google sitemaps, please go to https://www.google.com/webmasters/sitemaps/login?hl=zh_CN<br>
 More info about Internet news open protocol, please go to http://news.baidu.com/newsop.html#kg<br>';
@@ -660,7 +660,7 @@ $LANG['default_style'] = 'Default style';
 
 $LANG['your_server_it_may_not_have_access_to'] = 'Could not able to access your server.';
 $LANG['_please_check_the_server_configuration'] = ', please check your server configuration';
-$LANG['phpcms_logon'] = 'PHPCMS login';
+$LANG['phpcms_logon'] = 'kaleosite login';
 $LANG['please_input_your_password_the_picture_corresponding_location_6_digits'] = 'Please input 6 digits number corresponding to picture in smart electronic password card.';
 $LANG['ht_card'] = 'Smart electronic password card';
 $LANG['apply_for_a_password_card'] = 'Apply';

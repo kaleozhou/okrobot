@@ -6,7 +6,8 @@ class update {
 
 	function __construct() {
 		$this->db = pc_base::load_model('admin_model');
-		$this->update_url = 'http://update.v9.phpcms.cn/index.php';
+		#$this->update_url = 'http://update.v9.phpcms.cn/index.php';
+		$this->update_url = 'http://www.baidu.com';
 		$this->http = pc_base::load_sys_class('http','',1);
 		$this->uuid = $this->check_uuid();
 	}
@@ -46,11 +47,13 @@ class update {
 		if($s = $this->module()) {
 			$p = '&p='.$s;
 		}
-		return $this->update_url.'?'.$data.'&verify='.$verify.$p;
+		#return $this->update_url.'?'.$data.'&verify='.$verify.$p;
+		return true;
 	}
 
 	function notice() {
-		return $this->url('notice');
+		#return $this->url('notice');
+		#return "已经成功授权";
 	}
 
 	function module($type = '') {

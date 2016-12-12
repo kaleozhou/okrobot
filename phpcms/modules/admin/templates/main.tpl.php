@@ -81,7 +81,7 @@ function addtext(data) {
 <div class="col-2 col-auto">
 	<h6><?php echo L('main_sysinfo')?></h6>
 	<div class="content">
-	<?php echo L('main_version')?>Phpcms <?php echo PC_VERSION?>  Release <?php echo PC_RELEASE?> [<a href="http://download.phpcms.cn/v9/" target="_blank"><?php echo L('main_latest_version')?></a>]<br />
+	<?php echo L('main_version')?>KALEOSITE <?php echo PC_VERSION?>  Release <?php echo PC_RELEASE?> [<a href="http://download.phpcms.cn/v9/" target="_blank"><?php echo L('main_latest_version')?></a>]<br />
 	<?php echo L('main_os')?><?php echo $sysinfo['os']?> <br />
 	<?php echo L('main_web_server')?><?php echo $sysinfo['web_server']?> <br />
 	<?php echo L('main_sql_version')?><?php echo $sysinfo['mysqlv']?><br />
@@ -95,19 +95,18 @@ function addtext(data) {
 	<?php echo L('main_copyright')?><?php echo $product_copyright?><br />
 	<?php echo L('main_product_dev')?><?php echo $programmer;?><br />
 	<?php echo L('main_product_ui')?><?php echo $designer;?><br />
-	<?php echo L('main_product_site')?><a href="http://www.phpcms.cn/" target="_blank">http://www.phpcms.cn/</a> <br />
-	<?php echo L('main_product_bbs')?><a href="http://bbs.phpcms.cn/" target="_blank">http://bbs.phpcms.cn/</a> <br />
-	<?php echo L('main_product_qq')?>7634000 <br />
-	<?php echo L('main_product_sales')?>1561683312
+	<?php echo L('main_product_site')?><a href="http://www.xiangtingkeji.com" target="_blank">http:/www.xiangtingkeji.com//</a> <br />
+	<?php echo L('main_product_qq')?> 342080982<br />
+	<?php echo L('main_product_sales')?>616801795
 	</div>
 </div>
 
 <div class="col-2 col-auto">
 	<h6><?php echo L('main_license')?></h6>
 	<div class="content">
-	<?php echo L('main_version')?>Phpcms <?php echo PC_VERSION?>  Release <?php echo PC_RELEASE?> [<a href="http://buy.phpcms.cn" target="_blank"><?php echo L('main_support')?></a>]<br />
-	<?php echo L('main_license_type')?><span id="phpcms_license"></span> <br />
-	<?php echo L('main_serial_number')?><span id="phpcms_sn"></span> <br />
+	<?php echo L('main_version')?>KALEOSITE <br />
+	<?php echo L('main_license_type')?><span id="phpcms_license"></span>已授权 <br />
+	<?php echo L('main_serial_number')?><span id="phpcms_sn"></span>1222-1232-3232-4545-6544 <br />
 	</div>
 </div>
     <div class="bk10"></div>

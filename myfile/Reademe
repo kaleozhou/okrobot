@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# ******************************************************
+# Author       : kaleo
+# Last modified: 2016-12-12 09:55
+# Email        : kaleo1990@hotmail.com
+# Filename     : Reademe.txt
+# Description  : 
+# ******************************************************
+1.修改图标
+2.修改版权phpcms/languages/zh-cn/admin.lang.php
+3.替换后台图标statics/images/logo_1.gif
+4.去掉升级提示phpcms/libs/classes/update.class.php 文件
+5.修改phpcms/modules/admin/index.php 修改人员信息
+6.修改 modules/admin/templates/main.tpl.php 
