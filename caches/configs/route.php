@@ -21,5 +21,5 @@
  * 外部程序POST了一个变量catid=2那么你在程序中使用$_POST取到的值是2，而不是配置文件中所设置的1。
  */
 return array(
-	'default'=>array('m'=>'okrobot', 'c'=>'index', 'a'=>'init'),
+	'default'=>array('m'=>'ziyuan', 'c'=>'index', 'a'=>'init'),
 );
